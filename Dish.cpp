@@ -7,7 +7,7 @@
 #define SPL191_1_DISH_H
 
 enum DishType{
-
+    VEG, SPC, BVG, ALC
 };
 
 class Dish{
