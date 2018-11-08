@@ -5,7 +5,7 @@
 #include <string>
 #include "Dish.h"
 
-class Customer{
+class Customer {
 public:
     Customer(std::string c_name, int c_id);
     virtual std::vector<int> order(const std::vector<Dish> &menu)=0;
