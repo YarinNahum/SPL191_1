@@ -23,7 +23,7 @@ std::vector<int> SpicyCustomer::order(const std::vector<Dish> &menu)
 
         for (auto dish: spicy)
         {
-            if (dish.getPrice() > max)
+            if (dish.getPrice() > max | (dish.getPrice() == max & dish.getId() < maxId)
             {
                 max = dish.getPrice();
                 maxId = dish.getId();
@@ -41,7 +41,7 @@ std::vector<int> SpicyCustomer::order(const std::vector<Dish> &menu)
 
         for (auto dish: beverage)
         {
-            if (dish.getPrice() < min)
+            if (dish.getPrice() < min | (dish.getPrice() == min & dish.getId() < minId)
             {
                 min = dish.getPrice();
                 minId = dish.getId();

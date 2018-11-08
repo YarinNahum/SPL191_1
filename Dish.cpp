@@ -33,10 +33,9 @@ bool Dish::operator>(Dish &other)
 {
     //Do your own calculations here
     if (other.getPrice() < getPrice())
-    {
         return true;
-    }
-
+    if(other.getPrice() == getPrice())
+        return other.getId() < getId();
     return false;
 }
 //SPL191_1_DISH_H

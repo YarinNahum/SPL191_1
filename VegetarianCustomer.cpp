@@ -37,7 +37,7 @@ std::vector<int> VegetarianCustomer::order(const std::vector<Dish> &menu)
 
     for(auto dish: beverage)
     {
-        if (dish.getPrice() > max)
+        if (dish.getPrice() > max | (dish.getPrice() == max & dish.getId() < maxId)
         {
             max = dish.getPrice();
             maxId = dish.getId();
