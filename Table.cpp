@@ -6,7 +6,7 @@
 
 
 Table::Table(int t_capacity): capacity(t_capacity), numOfCustomers(0),open(false),
-                              customersList(std::vector<Customer*>()) ,orderList(std::vector<OrderPair>()) {
+                              customersList(std::vector<Customer*>()) ,orderList(std::vector<OrderPair>()), Bill(0) {
 }
 int Table::getCapacity() const {
     return capacity;
@@ -30,7 +30,7 @@ void Table::closeTable() {
 }
 void Table::addCustomer(Customer *customer) {
     if(numOfCustomers == capacity)
-        throw std::invalid_argument("Cannot add a customer to a full table");
+        throw std::invalid_argument("Cannot add a customer to a full table \n");
     customersList.push_back(customer);
     numOfCustomers++;
 
@@ -46,9 +46,6 @@ std::vector<OrderPair>& Table::getOrders() {
     return orderList;
 }
 int Table::getBill() {
-    int Bill = 0;
-    for(int i = 0 ; i < orderList.size() ; i++)
-        Bill+= orderList[i].second.getPrice();
     return Bill;
 }
 void Table::removeCustomer(int id) {
@@ -59,7 +56,13 @@ void Table::removeCustomer(int id) {
 void Table::order(const std::vector<Dish> &menu) {
     for(int i = 0 ; i < customersList.size() ; i++)
     {
-
+         std::vector<int> dishList = customersList[i]->order(menu);
+         for(int j = 0 ; j < dishList.size() ; j++)
+         {
+             OrderPair* OP = new OrderPair(customersList[i]->getId() , menu[dishList[j]]);
+             orderList.push_back(*OP);
+             Bill += menu[dishList[j]].getPrice();
+         }
     }
 }
 
