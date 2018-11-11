@@ -22,6 +22,11 @@ public:
     int getBill();
     int getNumOfCustomers();
     bool isOpen();
+    void setNumOfCustomers(int num);
+    void closeThisTable();
+
+    void setCustomerList(const std::vector<Customer *> vector);
+
 private:
     int capacity;
     int numOfCustomers;

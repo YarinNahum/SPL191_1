@@ -46,6 +46,7 @@ public:
     std::string toString() const;
 private:
     const int tableId;
+    std::string description;
 };
 
 
@@ -68,6 +69,7 @@ public:
     std::string toString() const;
 private:
     const int tableId;
+    int Bill;
 };
 
 

@@ -68,11 +68,31 @@ int Table::getBill()
     return bill;
 }
 
+void Table::setNumOfCustomers(int num) {
+    if(num > capacity)
+        std::cout << "Table capacity is lower than the number of customers\n ";
+    else
+        numOfCustomers = num;
+}
+
 void Table::removeCustomer(int id)
 {
     for(int i = 0 ; i <customersList.size(); i++)
         if(customersList[i]->getId() == id)
             customersList.erase(customersList.begin()+i);
+}
+void Table::closeThisTable() {
+    setNumOfCustomers(0);
+    closeTable();
+    for(int i = 0 ; i <orderList.size() ; i++)
+    {
+        orderList.erase(orderList.begin() +i);
+    }
+    for(int i = 0 ; i < customersList.size() ; i++)
+    {
+        delete(customersList[i]);
+        customersList.erase(customersList.begin()+i);
+    }
 }
 
 void Table::order(const std::vector<Dish> &menu)
@@ -93,4 +113,15 @@ void Table::order(const std::vector<Dish> &menu)
             }
         }
     }
+
+    for(auto pair: output)
+    {
+        for(auto customer: customersList)
+            if(pair.first == customer->getId())
+                std::cout << customer->getName() + " ordered " + pair.second.getName() + "\n";
+    }
+}
+
+void Table::setCustomerList(const std::vector<Customer *> customerList) {
+    customersList = customerList;
 }
