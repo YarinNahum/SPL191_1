@@ -93,11 +93,4 @@ void Table::order(const std::vector<Dish> &menu)
             }
         }
     }
-
-    for(auto pair: output)
-    {
-        for(auto customer: customersList)
-            if(pair.first == customer->getId())
-                std::cout << customer->getName() + " ordered " + pair.second.getName() + "\n";
-    }
 }

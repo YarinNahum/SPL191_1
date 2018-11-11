@@ -5,7 +5,7 @@
 SpicyCustomer::SpicyCustomer(std::string name, int id):Customer(name , id) {}
 
 std::string SpicyCustomer::toString() const {
-    std::string ret = "Name:" + getName() + ". " + "Customer Type: Spicy.";
+    std::string ret =  getName() + "," + "spc ";
     return ret;
 }
 
