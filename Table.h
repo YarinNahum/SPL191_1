@@ -20,13 +20,13 @@ public:
     void openTable();
     void closeTable();
     int getBill();
-    bool isOpen();
     int getNumOfCustomers();
+    bool isOpen();
 private:
     int capacity;
-    int Bill;
-    bool open;
     int numOfCustomers;
+    int bill;
+    bool open;
     std::vector<Customer*> customersList;
     std::vector<OrderPair> orderList; //A list of pairs for each order in a table - (customer_id, Dish)
 };
