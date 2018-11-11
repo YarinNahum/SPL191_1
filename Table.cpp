@@ -2,7 +2,8 @@
 #include <vector>
 #include "Customer.h"
 #include "Dish.h"
-#include <stdexcept>
+#include "iostream"
+
 
 Table::Table(int t_capacity): capacity(t_capacity), numOfCustomers(0),open(false),
                               customersList(std::vector<Customer*>()) ,orderList(std::vector<OrderPair>()) {
@@ -14,7 +15,8 @@ Customer* Table::getCustomer(int id) {
     for(int i = 0 ; i < customersList.size() ; i++)
         if(customersList[i]->getId() == id)
             return customersList[i];
-    throw std::invalid_argument("Cannot remove a customer that isn't in the table");
+     std::cout << "Cannot get a customer that isnt at the table. \n";
+
 }
 
 bool Table::isOpen() {
