@@ -33,7 +33,7 @@ std::vector<int> CheapCustomer::order(const std::vector<Dish> &menu)
     }
     else
     {
-        std::cout << "This Cheap Customer has already ordered";
+        std::cout << "This Cheap Customer has already ordered \n";
     }
 
     return output;

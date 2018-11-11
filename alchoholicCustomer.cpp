@@ -37,7 +37,7 @@ std::vector<int> AlchoholicCustomer::order(const std::vector<Dish> &menu)
     }
     else
     {
-        std::cout << "This Alchoholic Customer has already ordered the most expenensive alchoholic beverage in the menu";
+        std::cout << "This Alchoholic Customer has already ordered the most expenensive alchoholic beverage in the menu \n";
     }
 
     return output;
