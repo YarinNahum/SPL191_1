@@ -11,12 +11,13 @@ Close::Close(int id): tableId(id), Bill(0) {}
 void Close::act(Restaurant &restaurant) {
     Table *t = restaurant.getTable(tableId);
     if(t == nullptr || !t->isOpen())
-        std::cout << "Table does not exits or is not open\n";
+        error("Table does not exits or is not open\n");
     else
     {
         Bill = t->getBill();
         t->closeThisTable();
         std::cout << toString();
+        complete();
     }
 }
 

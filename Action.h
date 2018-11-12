@@ -35,14 +35,17 @@ public:
     std::string toString() const;
 private:
 	const int tableId;
-	const std::vector<Customer *> customers;
+	std::vector<Customer *> customers;
 };
 
 
 class Order : public BaseAction {
 public:
     Order(int id);
-    void act(Restaurant &restaurant);
+
+	Order(const std::string &description);
+
+	void act(Restaurant &restaurant);
     std::string toString() const;
 private:
     const int tableId;

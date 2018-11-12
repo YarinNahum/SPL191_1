@@ -24,7 +24,6 @@ public:
     bool isOpen();
     void setNumOfCustomers(int num);
     void closeThisTable();
-
     void setCustomerList(const std::vector<Customer *> vector);
 
 private:

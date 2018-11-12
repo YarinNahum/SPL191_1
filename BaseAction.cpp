@@ -20,4 +20,5 @@ void BaseAction::error(std::string errorMsg)
 {
     this->errorMsg = errorMsg;
     status = ERROR;
+    std::cout << "ERROR:" + this->getErrorMsg();
 }
