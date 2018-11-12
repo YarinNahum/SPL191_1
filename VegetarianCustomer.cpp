@@ -6,8 +6,7 @@
 VegetarianCustomer::VegetarianCustomer(std::string name, int id): Customer(name , id) {}
 std::string VegetarianCustomer::toString() const
 {
-
-    std::string ret =  getName() + "," + "veg ";
+    std::string ret = getName() + "," + "veg ";
     return ret;
 }
 

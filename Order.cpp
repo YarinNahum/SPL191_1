@@ -11,7 +11,7 @@ void Order::act(Restaurant &restaurant) {
     if(getStatus() == PENDING) {
         Table *t = restaurant.getTable(tableId);
         if (t == nullptr || !t->isOpen())
-            error("Table does not exits or is not open\n");
+            error("Error: Table does not exits or is not open\n");
         else {
             t->order(restaurant.getMenu());
             for (auto i : t->getOrders()) {

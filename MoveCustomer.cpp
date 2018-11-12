@@ -15,12 +15,12 @@ void MoveCustomer::act(Restaurant &restaurant)
         Table* destination = restaurant.getTable(dstTable);
 
         if(source == nullptr || destination == nullptr || !source->isOpen() || !destination->isOpen() || destination->getCustomers().size() < destination->getCapacity())
-            error("Cannot move customer\n");
+            error("Error: Cannot move customer\n");
 
         else {
             Customer *customer = source->getCustomer(id);
             if (customer == nullptr)
-                error("Cannot move customer\n");
+                error("Error: Cannot move customer\n");
 
             for (int i = 0; i < source->getOrders().size(); i++)
                 if (source->getOrders()[i].first == customer->getId()) {
