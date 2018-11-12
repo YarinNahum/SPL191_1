@@ -34,6 +34,7 @@ public:
     void act(Restaurant &restaurant);
     std::string toString() const;
 private:
+	std::string description;
 	const int tableId;
 	std::vector<Customer *> customers;
 };

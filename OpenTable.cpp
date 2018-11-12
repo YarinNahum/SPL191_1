@@ -5,7 +5,7 @@
 #include "Restaurant.h"
 
 
-OpenTable::OpenTable(int id, std::vector<Customer *> &customersList): tableId(id) , customers(customersList),  {}
+OpenTable::OpenTable(int id, std::vector<Customer *> &customersList): tableId(id) , customers(customersList), {}
 
 void OpenTable::act(Restaurant &restaurant) {
     if(getStatus() == PENDING) {
@@ -16,11 +16,12 @@ void OpenTable::act(Restaurant &restaurant) {
             t->setNumOfCustomers(customers.size());
             t->setCustomerList(customers);
             t->openTable();
+            description = "";
             complete();
         }
     }
 }
 
 std::string OpenTable::toString() const {
-    return descp
+    return description;
 }

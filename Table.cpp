@@ -55,6 +55,9 @@ std::vector<OrderPair> &Table::getOrders() {
 }
 
 int Table::getBill() {
+    int bill = 0;
+    for (auto i : orderList)
+        bill += i.second.getPrice();
     return bill;
 }
 
@@ -90,7 +93,6 @@ void Table::order(const std::vector<Dish> &menu) {
             for (auto dish: menu)
                 if (i == dish.getId()) {
                     orderList.push_back(OrderPair(customersList[i]->getId(), dish));
-                    bill += dish.getPrice();
                 }
     }
 
