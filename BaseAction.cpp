@@ -13,6 +13,7 @@ ActionStatus BaseAction::getStatus() const
 
 void BaseAction::complete()
 {
+    std::cout << toString();
     status = COMPLETED;
 }
 
@@ -20,4 +21,5 @@ void BaseAction::error(std::string errorMsg)
 {
     this->errorMsg = errorMsg;
     status = ERROR;
+    std:: cout << "Error:" + this->getErrorMsg();
 }

@@ -5,6 +5,7 @@
 
 
 OpenTable::OpenTable(int id, std::vector<Customer *> &customersList): tableId(id) , customers(customersList) {}
+
 void OpenTable::act(Restaurant &restaurant) {
     Table* t = restaurant.getTable();
     if(t == nullptr || t->isOpen())
@@ -13,20 +14,11 @@ void OpenTable::act(Restaurant &restaurant) {
         t->setNumOfCustomers(customers.size());
         t->setCustomerList(customers);
         t->openTable();
-        std::cout << toString();
+        description = "";
+        complete();
     }
-
 }
 
 std::string OpenTable::toString() const {
-    std::string output = "open " + tableId;
-    output += " ";
-    for(auto i : customers)
-    {
-        output += i->toString();
-        output += " ";
-    }
-    output += "\n";
-    return output;
+    return description;
 }
-

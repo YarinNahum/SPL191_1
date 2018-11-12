@@ -65,6 +65,11 @@ std::vector<OrderPair>& Table::getOrders()
 
 int Table::getBill()
 {
+    int bill = 0;
+    for(auto order: orderList)
+    {
+        bill += order.second.getPrice();
+    }
     return bill;
 }
 
@@ -97,7 +102,6 @@ void Table::closeThisTable() {
 
 void Table::order(const std::vector<Dish> &menu)
 {
-    std::vector<OrderPair> output;
 
     for(int i = 0 ; i < customersList.size() ; i++)
     {
@@ -107,21 +111,14 @@ void Table::order(const std::vector<Dish> &menu)
             for(auto dish: menu)
             {
                 if(i == dish.getId()) {
-                    output.push_back(OrderPair(customersList[i]->getId(), dish));
-                    bill += dish.getPrice();
+                    orderList.push_back(OrderPair(customersList[i]->getId(), dish));
                 }
             }
         }
     }
-
-    for(auto pair: output)
-    {
-        for(auto customer: customersList)
-            if(pair.first == customer->getId())
-                std::cout << customer->getName() + " ordered " + pair.second.getName() + "\n";
-    }
 }
 
-void Table::setCustomerList(const std::vector<Customer *> customerList) {
+void Table::setCustomerList(const std::vector<Customer *> customerList)
+{
     customersList = customerList;
 }

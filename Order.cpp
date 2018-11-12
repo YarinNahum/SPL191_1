@@ -25,6 +25,7 @@ void Order::act(Restaurant &restaurant) {
     }
 }
 
-std::string Order::toString() const {
+std::string Order::toString() const
+{
     return description;
 }
