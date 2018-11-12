@@ -34,6 +34,8 @@ void Restaurant::start()
 }
 Table* Restaurant::getTable(int ind)
 {
+    if(ind >= tables.size())
+        return nullptr;
     return tables.at(ind);
 }
 std::vector<Table*> Restaurant::getTables() {

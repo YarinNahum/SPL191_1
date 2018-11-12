@@ -7,7 +7,7 @@ VegetarianCustomer::VegetarianCustomer(std::string name, int id): Customer(name 
 std::string VegetarianCustomer::toString() const
 {
 
-    std::string ret = "Name:" + getName() + ". " + "Customer Type: Vegetarian.";
+    std::string ret =  getName() + "," + "veg ";
     return ret;
 }
 

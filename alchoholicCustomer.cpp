@@ -7,7 +7,7 @@
 AlchoholicCustomer::AlchoholicCustomer(std::string name, int id):Customer(name , id), rank(-1){}
 
 std::string AlchoholicCustomer::toString() const {
-    std::string ret = "Name:" + getName() + ". " + "Customer Type: Alcoholic.";
+    std::string ret = getName() + "," + "alc ";
     return ret;
 }
 

@@ -6,7 +6,7 @@
 CheapCustomer::CheapCustomer(std::string name, int id):Customer(name , id){}
 
 std::string CheapCustomer::toString() const {
-    std::string ret = "Name:" + getName() + ". " + "Customer Type: Cheap.";
+    std::string ret = getName() + "," + "chp ";
     return ret;
 }
 
