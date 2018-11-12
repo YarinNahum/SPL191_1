@@ -16,7 +16,6 @@ void Close::act(Restaurant &restaurant) {
     {
         Bill = t->getBill();
         t->closeThisTable();
-        std::cout << toString();
         complete();
     }
 }

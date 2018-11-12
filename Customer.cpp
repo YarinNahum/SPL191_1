@@ -25,6 +25,10 @@ void Customer::setOrdered(bool value)
     ordered = value;
 }
 
+bool Customer::hasOrdered() const {
+    return ordered;
+}
+
 std::vector<Dish>& Customer::strategy(const std::vector<Dish> &menu, DishType dishType)
 {
     std::vector<Dish> output;

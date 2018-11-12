@@ -20,9 +20,6 @@ void Order::act(Restaurant &restaurant) {
                 description += cName + " ordered " + dName + "\n";
 
             }
-            if(description != "") {
-                std::cout << toString();
-            }
             complete();
         }
     }
