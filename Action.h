@@ -43,7 +43,10 @@ private:
 class Order : public BaseAction {
 public:
     Order(int id);
-    void act(Restaurant &restaurant);
+
+	Order(const std::string &description);
+
+	void act(Restaurant &restaurant);
     std::string toString() const;
 private:
     const int tableId;
@@ -79,6 +82,7 @@ public:
     void act(Restaurant &restaurant);
     std::string toString() const;
 private:
+    std::string output;
 };
 
 

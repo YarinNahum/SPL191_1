@@ -38,3 +38,10 @@ Table* Restaurant::getTable(int ind)
         return nullptr;
     return tables.at(ind);
 }
+std::vector<Table*> Restaurant::getTables() {
+    return tables;
+}
+
+void Restaurant::CloseRestaurant() {
+    open = false;
+}
