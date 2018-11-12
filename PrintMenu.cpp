@@ -11,8 +11,7 @@ void PrintMenu::act(Restaurant &restaurant)
     {
         description = "";
         for (auto dish: restaurant.getMenu()) {
-            description +=
-                    dish.getName() + " " + std::to_string(dish.getType()) + " " + std::to_string(dish.getPrice()) + "NIS\n";
+            description += dish.getName() + " " + std::to_string(dish.getType()) + " " + std::to_string(dish.getPrice()) + "NIS\n";
         }
 
         complete();

@@ -5,7 +5,7 @@
 #include "Restaurant.h"
 #include "Table.h"
 
-Order::Order(int id): tableId(id), description("") {}
+Order::Order(int id): tableId(id) {}
 
 void Order::act(Restaurant &restaurant) {
     if(getStatus() == PENDING) {
