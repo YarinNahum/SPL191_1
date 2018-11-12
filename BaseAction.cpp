@@ -13,13 +13,13 @@ ActionStatus BaseAction::getStatus() const
 
 void BaseAction::complete()
 {
-    status = COMPLETED;
     std::cout << toString();
+    status = COMPLETED;
 }
 
 void BaseAction::error(std::string errorMsg)
 {
     this->errorMsg = errorMsg;
     status = ERROR;
-    std::cout << "ERROR:" + this->getErrorMsg();
+    std:: cout << "Error:" + this->getErrorMsg();
 }

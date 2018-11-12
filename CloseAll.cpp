@@ -6,7 +6,7 @@
 #include "Table.h"
 #include "Restaurant.h"
 
-CloseAll::CloseAll():output("") {}
+CloseAll::CloseAll() {}
 
 void CloseAll::act(Restaurant &restaurant) {
     if(getStatus() == PENDING)
@@ -15,8 +15,8 @@ void CloseAll::act(Restaurant &restaurant) {
             if (restaurant.getTables()[i]->isOpen()) {
                 Close *c = new Close(i);
                 c->act(restaurant);
-                output += c->toString();
-                delete (c);
+                description += c->toString();
+                delete c;
             }
         }
         complete();
@@ -25,5 +25,5 @@ void CloseAll::act(Restaurant &restaurant) {
 }
 
 std::string CloseAll::toString() const {
-    return output;
+    return description;
 }

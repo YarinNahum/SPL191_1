@@ -5,27 +5,41 @@
 #include "Table.h"
 #include "Restaurant.h"
 #include "Customer.h"
-#include <iostream>
 
 MoveCustomer::MoveCustomer(int src, int dst, int customerId):srcTable(src), dstTable(dst), id(customerId) {}
 
 void MoveCustomer::act(Restaurant &restaurant)
 {
-    Table* source = restaurant.getTable(srcTable);
-    Table* destination = restaurant.getTable(dstTable);
-    Customer* customer = source->getCustomer(id);
+    if(getStatus() == PENDING) {
+        Table* source = restaurant.getTable(srcTable);
+        Table* destination = restaurant.getTable(dstTable);
 
-    for (int i = 0; i < source->getOrders().size(); i++)
-        if(source->getOrders()[i].first == customer->getId())
-        {
-            destination->getOrders().push_back(source->getOrders()[i]);
-            source->getOrders().erase(source->getOrders().begin()+i);
+        if(source == nullptr || destination == nullptr || !source->isOpen() || !destination->isOpen() || destination->getCustomers().size() < destination->getCapacity())
+            error("Cannot move customer\n");
+
+        else {
+            Customer *customer = source->getCustomer(id);
+            if (customer == nullptr)
+                error("Cannot move customer\n");
+
+            for (int i = 0; i < source->getOrders().size(); i++)
+                if (source->getOrders()[i].first == customer->getId()) {
+                    destination->getOrders().push_back(source->getOrders()[i]);
+                    source->getOrders().erase(source->getOrders().begin() + i);
+                }
+
+            source->removeCustomer(id);
+            destination->addCustomer(customer);
+
+            if (source->getCustomers().size() == 0) {
+                BaseAction *close = new Close(srcTable);
+                close->act(restaurant);
+                delete close;
+            }
+
+            complete();
         }
-
-    source->removeCustomer(id);
-    destination->addCustomer(customer);
-
-    std::cout << toString();
+    }
 }
 
 std::string MoveCustomer::toString() const

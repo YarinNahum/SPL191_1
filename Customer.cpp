@@ -25,7 +25,8 @@ void Customer::setOrdered(bool value)
     ordered = value;
 }
 
-bool Customer::hasOrdered() const {
+bool Customer::hasOrdered() const
+{
     return ordered;
 }
 

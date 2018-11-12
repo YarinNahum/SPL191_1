@@ -22,6 +22,7 @@ protected:
     void complete();
     void error(std::string errorMsg);
     std::string getErrorMsg() const;
+	std::string description;
 private:
     std::string errorMsg;
     ActionStatus status;
@@ -50,7 +51,6 @@ public:
     std::string toString() const;
 private:
     const int tableId;
-    std::string description;
 };
 
 
@@ -83,7 +83,6 @@ public:
     void act(Restaurant &restaurant);
     std::string toString() const;
 private:
-    std::string output;
 };
 
 

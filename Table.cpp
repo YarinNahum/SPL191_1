@@ -5,7 +5,7 @@
 #include "iostream"
 
 
-Table::Table(int t_capacity) : capacity(t_capacity), numOfCustomers(0), open(false), bill(0),
+Table::Table(int t_capacity) : capacity(t_capacity), numOfCustomers(0), open(false),
                                customersList(std::vector<Customer *>()), orderList(std::vector<OrderPair>()) {}
 
 int Table::getCapacity() const {
@@ -56,8 +56,8 @@ std::vector<OrderPair> &Table::getOrders() {
 
 int Table::getBill() {
     int bill = 0;
-    for (auto i : orderList)
-        bill += i.second.getPrice();
+    for(auto order: orderList)
+        bill += order.second.getPrice();
     return bill;
 }
 

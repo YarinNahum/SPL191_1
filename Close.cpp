@@ -16,13 +16,13 @@ void Close::act(Restaurant &restaurant) {
     {
         Bill = t->getBill();
         t->closeThisTable();
+        description = "Table " + std::to_string(tableId) + " was closed. Bill " + std::to_string(Bill) +"NIS\n";
         complete();
     }
 }
 
 std::string Close::toString() const {
-    std:: string output = "Table " + std::to_string(tableId) + " was closed. Bill " + std::to_string(Bill) +"NIS\n";
-    return output;
+    return description;
 }
 
 

@@ -5,20 +5,18 @@
 #include "Restaurant.h"
 
 
-OpenTable::OpenTable(int id, std::vector<Customer *> &customersList): tableId(id) , customers(customersList), {}
+OpenTable::OpenTable(int id, std::vector<Customer *> &customersList): tableId(id) , customers(customersList) {}
 
 void OpenTable::act(Restaurant &restaurant) {
-    if(getStatus() == PENDING) {
-        Table* t = restaurant.getTable(tableId);
-        if (t == nullptr || t->isOpen()) {
-            error("Table does not exits or is already open\n");
-        } else {
-            t->setNumOfCustomers(customers.size());
-            t->setCustomerList(customers);
-            t->openTable();
-            description = "";
-            complete();
-        }
+    Table* t = restaurant.getTable(tableId);
+    if(t == nullptr || t->isOpen())
+        std::cout << "Table does not exits or is already open";
+    else {
+        t->setNumOfCustomers(customers.size());
+        t->setCustomerList(customers);
+        t->openTable();
+        description = "";
+        complete();
     }
 }
 
