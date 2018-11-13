@@ -20,14 +20,14 @@ void Order::act(Restaurant &restaurant) {
                 std::string cName = t->getCustomer(i.first)->getName();
                 std::string dName = i.second.getName();
                 description += cName + " ordered " + dName + "\n";
-
             }
             complete();
+            std::cout << description;
         }
     }
 }
 
 std::string Order::toString() const
 {
-    return description;
+    return "order " + std::to_string(tableId) + "\n";
 }
