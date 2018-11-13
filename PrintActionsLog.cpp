@@ -7,14 +7,13 @@
 PrintActionsLog::PrintActionsLog() {}
 
 void PrintActionsLog::act(Restaurant &restaurant) {
-    description = "";
     for(auto i : restaurant.getActionsLog())
     {
-        description += i->toString();
+        std::cout << i->toString();
     }
     complete();
 }
 
 std::string PrintActionsLog::toString() const {
-    return  description;
+    return  "log";
 }

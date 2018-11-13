@@ -15,7 +15,6 @@ void CloseAll::act(Restaurant &restaurant) {
             if (restaurant.getTables()[i]->isOpen()) {
                 Close *c = new Close(i);
                 c->act(restaurant);
-                description += c->toString();
                 delete c;
             }
         }
@@ -25,5 +24,5 @@ void CloseAll::act(Restaurant &restaurant) {
 }
 
 std::string CloseAll::toString() const {
-    return description;
+    return "closeall\n";
 }
