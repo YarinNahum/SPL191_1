@@ -21,3 +21,7 @@ void BaseAction::error(std::string errorMsg)
     this->errorMsg = errorMsg;
     status = ERROR;
 }
+
+std::string BaseAction::getErrorMsg() const {
+    return errorMsg;
+}
