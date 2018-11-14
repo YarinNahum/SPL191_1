@@ -27,4 +27,7 @@ std::string Close::toString() const {
     return "close " + std::to_string(tableId) + "\n";
 }
 
-
+BaseAction* Close::clone() const
+{
+    return new Close(tableId);
+}

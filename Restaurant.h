@@ -11,6 +11,9 @@
 class Restaurant{		
 public:
 	Restaurant();
+	~Restaurant();
+	Restaurant(const Restaurant& restaurant);
+	
     Restaurant(const std::string &configFilePath);
     void start();
     int getNumOfTables() const;

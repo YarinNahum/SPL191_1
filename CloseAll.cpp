@@ -26,3 +26,8 @@ void CloseAll::act(Restaurant &restaurant) {
 std::string CloseAll::toString() const {
     return "closeall\n";
 }
+
+BaseAction* Close::clone() const
+{
+    return new CloseAll();
+}

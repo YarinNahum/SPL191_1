@@ -50,3 +50,8 @@ std::string MoveCustomer::toString() const
 {
     return  "move" + std::to_string(srcTable) + " " + std::to_string(dstTable) + " " + std::to_string(id) + "\n";
 }
+
+BaseAction* MoveCustomer::clone() const
+{
+    return new MoveCustomer(srcTable, dstTable, id);
+}

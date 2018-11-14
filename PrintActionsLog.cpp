@@ -17,3 +17,8 @@ void PrintActionsLog::act(Restaurant &restaurant) {
 std::string PrintActionsLog::toString() const {
     return  "log";
 }
+
+BaseAction* PrintActionsLog::clone() const
+{
+    return new PrintActionsLog();
+}

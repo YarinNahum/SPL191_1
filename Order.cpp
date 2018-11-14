@@ -31,3 +31,8 @@ std::string Order::toString() const
 {
     return "order " + std::to_string(tableId) + "\n";
 }
+
+BaseAction* Order::clone() const
+{
+    return new Order(tableId);
+}

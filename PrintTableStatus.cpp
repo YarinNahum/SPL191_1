@@ -42,3 +42,8 @@ std::string PrintTableStatus::toString() const
 {
     return "status " + std::to_string(tableId) + "\n";
 }
+
+BaseAction* PrintTableStatus::clone() const
+{
+    return new PrintTableStatus(tableId);
+}

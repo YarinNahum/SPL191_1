@@ -5,6 +5,8 @@
 #include "Action.h"
 #include "Restaurant.h"
 
+PrintMenu::PrintMenu() {}
+
 void PrintMenu::act(Restaurant &restaurant)
 {
     if(getStatus() == PENDING)
@@ -19,4 +21,9 @@ void PrintMenu::act(Restaurant &restaurant)
 std::string PrintMenu::toString() const
 {
     return "menu\n";
+}
+
+BaseAction* PrintMenu::clone() const
+{
+    return new PrintMenu();
 }

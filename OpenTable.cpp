@@ -4,8 +4,7 @@
 #include "Action.h"
 #include "Restaurant.h"
 
-
-OpenTable::OpenTable(int id, std::vector<Customer *> &customersList): tableId(id) , customers(customersList) {}
+OpenTable::OpenTable(int id, std::vector<Customer *> &customersList): tableId(id), customers(customersList) {}
 
 void OpenTable::act(Restaurant &restaurant) {
     Table* t = restaurant.getTable(tableId);
@@ -35,4 +34,17 @@ void OpenTable::act(Restaurant &restaurant) {
 
 std::string OpenTable::toString() const {
     return description;
+}
+
+BaseAction* OpenTable::clone() const
+{
+    return new OpenTable(*this);
+}
+
+//Rule of 5
+
+OpenTable::OpenTable(OpenTable &openTable): tableId(openTable.tableId) {
+    for (auto customer: openTable.customers) {
+        customers.push_back(customer->clone());
+    }
 }
