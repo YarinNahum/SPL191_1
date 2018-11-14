@@ -42,3 +42,7 @@ std::vector<int> AlchoholicCustomer::order(const std::vector<Dish> &menu)
 
     return output;
 }
+
+Customer* AlchoholicCustomer::clone() {
+    return new AlchoholicCustomer(*this);
+}

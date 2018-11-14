@@ -53,3 +53,7 @@ std::vector<int> SpicyCustomer::order(const std::vector<Dish> &menu)
 
     return output;
 }
+
+Customer* SpicyCustomer::clone() {
+    return new SpicyCustomer(*this);
+}

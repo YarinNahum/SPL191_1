@@ -48,3 +48,7 @@ std::vector<int> VegetarianCustomer::order(const std::vector<Dish> &menu)
 
     return output;
 }
+
+Customer* VegetarianCustomer::clone() {
+    return new VegetarianCustomer(*this);
+}
