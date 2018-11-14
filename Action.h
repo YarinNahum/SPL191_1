@@ -44,9 +44,6 @@ private:
 class Order : public BaseAction {
 public:
     Order(int id);
-
-	Order(const std::string &description);
-
 	void act(Restaurant &restaurant);
     std::string toString() const;
 private:

@@ -20,11 +20,19 @@ public:
     void openTable();
     void closeTable();
     int getBill();
-    int getNumOfCustomers();
+    int getNumOfCustomers() const;
     bool isOpen();
     void setNumOfCustomers(int num);
     void closeThisTable();
     void setCustomerList(const std::vector<Customer *> vector);
+    Table(const Table& other); // Copy constructor
+    Table* clone();
+    ~Table();
+    Table &operator=(const Table &other);
+    void clear();
+    void copy(const Table &other);
+    Table &operator= (Table&& other);
+    Table(Table&& other);
 
 private:
     int capacity;
