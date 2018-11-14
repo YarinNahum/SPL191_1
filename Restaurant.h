@@ -13,8 +13,12 @@ public:
 	Restaurant();
 	~Restaurant();
 	Restaurant(const Restaurant& restaurant);
-	
-    Restaurant(const std::string &configFilePath);
+	Restaurant &operator=(const Restaurant &restaurant);
+	Restaurant(Restaurant&& restaurant);
+	Restaurant &operator= (Restaurant&& restaurant);
+	void copy(const Restaurant& restaurant);
+	void clear();
+	Restaurant(const std::string &configFilePath);
     void start();
     int getNumOfTables() const;
     Table* getTable(int ind);

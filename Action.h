@@ -33,7 +33,11 @@ private:
 class OpenTable : public BaseAction {
 public:
     OpenTable(int id, std::vector<Customer *> &customersList);
-    OpenTable(OpenTable& openTable);
+    ~OpenTable();
+    OpenTable(const OpenTable& openTable);
+    OpenTable(OpenTable&& openTable);
+    void copy(const OpenTable& openTable);
+    void clear();
     void act(Restaurant &restaurant);
     std::string toString() const;
     BaseAction* clone() const;

@@ -113,7 +113,7 @@ Table* Table::clone() {
     return new Table(*this);
 }
 
-// Rule of 5
+//Rule of 5
 
 Table::Table(const Table &other) {
     copy(other);
@@ -162,7 +162,8 @@ Table& Table::operator=(Table &&other) {
 Table::Table(Table &&other) {
     copy(other);
     for(auto i : other.customersList)
-        i =nullptr;
+        i = nullptr;
+    other.customersList.clear();
 }
 
 

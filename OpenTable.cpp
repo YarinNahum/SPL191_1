@@ -41,10 +41,42 @@ BaseAction* OpenTable::clone() const
     return new OpenTable(*this);
 }
 
-//Rule of 5
-
-OpenTable::OpenTable(OpenTable &openTable): tableId(openTable.tableId) {
-    for (auto customer: openTable.customers) {
-        customers.push_back(customer->clone());
+void OpenTable::copy(const OpenTable &openTable)
+{
+    for(auto customer: openTable.customers)
+    {
+        customers.push_back(customer);
     }
+}
+
+void OpenTable::clear()
+{
+    for(auto customer: customers)
+    {
+        delete customer;
+    }
+
+    customers.clear();
+}
+
+//Rule of 3
+
+OpenTable::~OpenTable()
+{
+    clear();
+}
+
+OpenTable::OpenTable(const OpenTable& openTable): tableId(openTable.tableId)
+{
+    copy(openTable);
+}
+
+OpenTable::OpenTable(OpenTable&& openTable): tableId(openTable.tableId)
+{
+    copy(openTable);
+    for(auto customer: openTable.customers)
+    {
+        customer = nullptr;
+    }
+    openTable.customers.clear();
 }

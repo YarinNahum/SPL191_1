@@ -51,26 +51,7 @@ void Restaurant::CloseRestaurant() {
     open = false;
 }
 
-//Rule of 5
-
-Restaurant::~Restaurant()
-{
-    for(auto table: tables)
-    {
-        delete table;
-    }
-
-    tables.clear();
-
-    for(auto action: actionsLog)
-    {
-        delete action;
-    }
-
-    actionsLog.clear();
-}
-
-Restaurant::Restaurant(const Restaurant &restaurant)
+void Restaurant::copy(const Restaurant& restaurant)
 {
     open = restaurant.open;
 
@@ -90,3 +71,76 @@ Restaurant::Restaurant(const Restaurant &restaurant)
     }
 }
 
+void Restaurant::clear()
+{
+    for(auto table: tables)
+    {
+        delete table;
+    }
+
+    tables.clear();
+
+    for(auto action: actionsLog)
+    {
+        delete action;
+    }
+
+    actionsLog.clear();
+}
+
+//Rule of 5
+
+Restaurant::~Restaurant()
+{
+    clear();
+}
+
+Restaurant::Restaurant(const Restaurant& restaurant)
+{
+    copy(restaurant);
+}
+
+Restaurant& Restaurant::operator=(const Restaurant &restaurant) {
+    if(this == &restaurant)
+        return *this;
+    clear();
+    copy(restaurant);
+}
+
+Restaurant::Restaurant(Restaurant &&restaurant)
+{
+    copy(restaurant);
+    for(auto table: restaurant.tables)
+    {
+        table = nullptr;
+    }
+    restaurant.tables.clear();
+
+    for(auto action: restaurant.actionsLog)
+    {
+        action = nullptr;
+    }
+    restaurant.actionsLog.clear();
+}
+
+Restaurant& Restaurant::operator=(Restaurant &&restaurant) {
+    if(this == &restaurant)
+        return *this;
+
+    clear();
+    copy(restaurant);
+
+    for(auto table: restaurant.tables)
+    {
+        table = nullptr;
+    }
+    restaurant.tables.clear();
+
+    for(auto action: restaurant.actionsLog)
+    {
+        action = nullptr;
+    }
+    restaurant.actionsLog.clear();
+
+    return *this;
+}
