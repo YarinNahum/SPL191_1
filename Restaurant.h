@@ -6,6 +6,7 @@
 #include "Dish.h"
 #include "Table.h"
 #include "Action.h"
+using namespace std;
 
 
 class Restaurant{		
@@ -26,13 +27,12 @@ public:
     std::vector<Dish>& getMenu();
     std::vector<Table*> getTables();
     void CloseRestaurant();
-
 private:
     bool open;
     std::vector<Table*> tables;
     std::vector<Dish> menu;
     std::vector<BaseAction*> actionsLog;
-    void readFile();
+    void ReadFile(const string& configFilePath);
 };
 
 #endif
