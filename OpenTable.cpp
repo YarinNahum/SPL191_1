@@ -59,7 +59,7 @@ void OpenTable::clear()
     customers.clear();
 }
 
-//Rule of 3
+//Rule of 5
 
 OpenTable::~OpenTable()
 {
@@ -74,9 +74,28 @@ OpenTable::OpenTable(const OpenTable& openTable): tableId(openTable.tableId)
 OpenTable::OpenTable(OpenTable&& openTable): tableId(openTable.tableId)
 {
     copy(openTable);
-    for(auto customer: openTable.customers)
+    for(int i = 0 ; i < openTable.customers.size() ; i++)
     {
-        customer = nullptr;
+        openTable.customers[i] = nullptr;
     }
     openTable.customers.clear();
+}
+
+OpenTable& OpenTable::operator=(const OpenTable &other) {
+    if(this == &other)
+        return *this;
+    clear();
+    copy(other);
+}
+
+OpenTable& OpenTable::operator=(OpenTable &&other) {
+    if(this == &other)
+        return *this;
+    clear();
+    copy(other);
+    other.clear();
+    for(int i = 0; i < other.customers.size() ; i++)
+        other.customers[i] = nullptr;
+    return *this;
+
 }

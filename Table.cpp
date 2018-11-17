@@ -154,16 +154,17 @@ Table& Table::operator=(Table &&other) {
         return *this;
     clear();
     copy(other);
-    for(auto i : other.customersList)
-        i=nullptr;
+    for(int i =0 ; i< other.customersList.size() ; i++)
+        other.customersList[i] =nullptr;
     return *this;
 }
 
 Table::Table(Table &&other) {
     copy(other);
-    for(auto i : other.customersList)
-        i = nullptr;
+    for(int i = 0 ; i < other.customersList.size() ; i++)
+        other.customersList[i] = nullptr;
     other.customersList.clear();
 }
+
 
 

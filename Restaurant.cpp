@@ -322,15 +322,15 @@ Restaurant& Restaurant::operator=(const Restaurant &restaurant) {
 Restaurant::Restaurant(Restaurant &&restaurant)
 {
     copy(restaurant);
-    for(auto table: restaurant.tables)
+    for(int i =0 ; i < restaurant.tables.size() ; i++)
     {
-        table = nullptr;
+        restaurant.tables[i] = nullptr;
     }
     restaurant.tables.clear();
 
-    for(auto action: restaurant.actionsLog)
+    for(int i = 0 ; i < restaurant.actionsLog.size() ; i++)
     {
-        action = nullptr;
+        restaurant.actionsLog[i] = nullptr;
     }
     restaurant.actionsLog.clear();
 }
@@ -342,15 +342,15 @@ Restaurant& Restaurant::operator=(Restaurant &&restaurant) {
     clear();
     copy(restaurant);
 
-    for(auto table: restaurant.tables)
+    for(int i =0 ; i < restaurant.tables.size() ; i++)
     {
-        table = nullptr;
+        restaurant.tables[i] =nullptr;
     }
     restaurant.tables.clear();
 
-    for(auto action: restaurant.actionsLog)
+    for(int i = 0 ; i < restaurant.actionsLog.size() ; i++)
     {
-        action = nullptr;
+        restaurant.actionsLog[i] = nullptr;
     }
     restaurant.actionsLog.clear();
 

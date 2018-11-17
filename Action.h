@@ -41,6 +41,8 @@ public:
     void act(Restaurant &restaurant);
     std::string toString() const;
     BaseAction* clone() const;
+    OpenTable &operator=(const OpenTable &other);
+    OpenTable &operator= (OpenTable&& other);
 private:
 	std::string description;
 	const int tableId;
