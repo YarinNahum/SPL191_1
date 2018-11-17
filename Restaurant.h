@@ -27,6 +27,9 @@ public:
     std::vector<Dish>& getMenu();
     std::vector<Table*> getTables();
     void CloseRestaurant();
+    std:: vector<int> getNumbers(std::string input);
+    int findTableID(string input);
+    std::vector<string> getCustList(std::string input);
 private:
     bool open;
     std::vector<Table*> tables;

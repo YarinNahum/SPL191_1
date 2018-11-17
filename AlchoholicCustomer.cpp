@@ -2,6 +2,7 @@
 #include "Customer.h"
 #include "Dish.h"
 #include "algorithm"
+#include "string"
 #include <iostream>
 
 AlchoholicCustomer::AlchoholicCustomer(std::string name, int id):Customer(name , id), rank(-1){}
