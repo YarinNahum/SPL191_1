@@ -31,10 +31,6 @@ std::vector<int> CheapCustomer::order(const std::vector<Dish> &menu)
         setOrdered(true);
         output.push_back(minId);
     }
-    else
-    {
-        std::cout << "This Cheap Customer has already ordered \n";
-    }
 
     return output;
 }

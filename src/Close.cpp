@@ -24,7 +24,9 @@ void Close::act(Restaurant &restaurant) {
 }
 
 std::string Close::toString() const {
-    return "close " + std::to_string(tableId) + "\n";
+    if(getStatus() == ERROR)
+         return "close " + std::to_string(tableId) + " Error: table does not exits or is not open\n";
+    return "close " + std::to_string(tableId) + " Completed\n";
 }
 
 BaseAction* Close::clone() const

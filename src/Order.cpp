@@ -9,6 +9,7 @@ Order::Order(int id): tableId(id) {}
 
 void Order::act(Restaurant &restaurant) {
     if(getStatus() == PENDING) {
+        description ="";
         Table* t = restaurant.getTable(tableId);
         if (t == nullptr || !t->isOpen()) {
             error("Error: table does not exits or is not open\n");
@@ -16,21 +17,16 @@ void Order::act(Restaurant &restaurant) {
         }
         else {
             t->order(restaurant.getMenu());
-            for (auto i : t->getOrders()) {
-                std::string cName = t->getCustomer(i.first)->getName();
-                std::string dName = i.second.getName();
-                description += cName + " ordered " + dName + "\n";
-            }
             complete();
-            std::cout << description;
-            std:: cout << "ERROR";
         }
     }
 }
 
 std::string Order::toString() const
 {
-    return "order " + std::to_string(tableId) + "\n";
+    if(getStatus() == ERROR)
+        return "order " + std::to_string(tableId) + " Error: table does not exits or is not open\n";
+    return "order " + std::to_string(tableId) + " Completed\n";
 }
 
 BaseAction* Order::clone() const

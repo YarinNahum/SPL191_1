@@ -19,7 +19,7 @@ void BackupRestaurant::act(Restaurant &restaurant)
 
 std::string BackupRestaurant::toString() const
 {
-    return "backup\n";
+    return "backup Completed\n";
 }
 
 BaseAction* BackupRestaurant::clone() const

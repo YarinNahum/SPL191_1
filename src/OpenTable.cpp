@@ -8,24 +8,22 @@ OpenTable::OpenTable(int id, std::vector<Customer *> &customersList): tableId(id
 
 void OpenTable::act(Restaurant &restaurant) {
     Table* t = restaurant.getTable(tableId);
+    description = "open " + std::to_string(tableId) + " ";
+    for(auto i :customers )
+    {
+        description += i->toString();
+    }
     if(t == nullptr) {
-        error("Error: Table does not exits or is already open");
+        error(description + "Error: Table does not exits or is already open");
         description = getErrorMsg();
     }
     else {
-        description = "open " + std::to_string(tableId) + " ";
-        for(auto i :customers )
-        {
-            description += i->toString();
-        }
-        t->setNumOfCustomers(customers.size());
-        t->setCustomerList(customers);
-        t->openTable();
         if(t->isOpen()) {
             error(description + "Error: Table does not exits or is already open\n");
             description = getErrorMsg();
         }
         else {
+            t->openTable();
             description += "Completed\n";
             complete();
         }
@@ -33,7 +31,7 @@ void OpenTable::act(Restaurant &restaurant) {
 }
 
 std::string OpenTable::toString() const {
-    return description;
+        return description ;
 }
 
 BaseAction* OpenTable::clone() const

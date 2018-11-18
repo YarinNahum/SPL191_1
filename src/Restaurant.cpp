@@ -40,6 +40,7 @@ std::vector<std::string> split(const std::string &string, char delimiter)
 
 void Restaurant::ReadFile(const string& configFilePath)
 {
+
     ifstream stream(configFilePath);
 
     int counter(0), hashtags(0);
@@ -62,11 +63,11 @@ void Restaurant::ReadFile(const string& configFilePath)
                 {
                 strings = split(line, ',');
 
-                if (hashtags == 2)
+                if (hashtags == 3)
                     for (auto string: strings)
                         tables.push_back(new Table(stoi(string)));
 
-                else if (hashtags == 3)
+                else if (hashtags == 4)
                 {
                     DishType type;
 
@@ -106,7 +107,7 @@ void Restaurant::start()
 {
     int cusID = 0;
     string input;
-    cout << "Restaurant is open!";
+    cout << "Restaurant is open!\n";
     getline(cin , input);
     while (input !="closeall")
     {
@@ -142,7 +143,10 @@ void Restaurant::start()
         if(input.substr(0 , 4) == "open" )
         {
             input.erase(0 ,5);
-            int tableId = findTableID(input);
+            string token = input.substr(0 , input.find(" "));
+            int tableId = stoi(token);
+            Table* t = getTable(tableId);
+            input.erase(0,token.length()+1);
             vector <string> tokens = getCustList(input);
             vector<Customer*> customerList;
             for(int i = 0 ; i < tokens.size() ; i++)
@@ -159,11 +163,13 @@ void Restaurant::start()
                     C = new CheapCustomer(Name , cusID);
                 if(Type == "spc")
                     C = new SpicyCustomer(Name, cusID);
-                if(Type == "acl")
+                if(Type == "alc")
                     C= new AlchoholicCustomer(Name , cusID);
                 customerList.push_back(C);
+                t->addCustomer(C);
                 cusID++;
             }
+
             BaseAction *action = new OpenTable(tableId , customerList);
             action->act(*this);
             actionsLog.push_back(action);

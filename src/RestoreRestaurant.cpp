@@ -11,7 +11,7 @@ RestoreResturant::RestoreResturant() {}
 void RestoreResturant::act(Restaurant &restaurant)
 {
     if(backup == nullptr)
-        error("No backup available");
+        error("No backup available\n");
 
     else
     {
@@ -22,7 +22,9 @@ void RestoreResturant::act(Restaurant &restaurant)
 
 std::string RestoreResturant::toString() const
 {
-    return "restore\n";
+    if(getStatus() == ERROR)
+        return "restore Error: No backup available\n";
+    return "restore Completed \n";
 }
 
 BaseAction* RestoreResturant::clone() const

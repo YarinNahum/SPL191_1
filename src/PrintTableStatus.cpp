@@ -40,7 +40,7 @@ void PrintTableStatus::act(Restaurant &restaurant)
 
 std::string PrintTableStatus::toString() const
 {
-    return "status " + std::to_string(tableId) + "\n";
+    return "status " + std::to_string(tableId) + " Completed\n";
 }
 
 BaseAction* PrintTableStatus::clone() const
