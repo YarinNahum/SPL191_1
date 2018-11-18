@@ -201,6 +201,7 @@ void Restaurant::start()
             action->act(*this);
             actionsLog.push_back(action);
         }
+        getline(cin , input);
     }
 
     BaseAction *action = new CloseAll();
