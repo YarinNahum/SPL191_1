@@ -1,9 +1,9 @@
 //
 // Created by yarin on 11/11/18.
 //
-#include "Action.h"
-#include "Restaurant.h"
-#include "Table.h"
+#include "../include/Action.h"
+#include "../include/Restaurant.h"
+#include "../include/Table.h"
 
 Order::Order(int id): tableId(id) {}
 
@@ -23,6 +23,7 @@ void Order::act(Restaurant &restaurant) {
             }
             complete();
             std::cout << description;
+            std:: cout << "ERROR";
         }
     }
 }

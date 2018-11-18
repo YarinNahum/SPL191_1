@@ -1,8 +1,8 @@
 
-#include "Customer.h"
-#include "Table.h"
-#include "Action.h"
-#include "Restaurant.h"
+#include "../include/Customer.h"
+#include "../include/Table.h"
+#include "../include/Action.h"
+#include "../include/Restaurant.h"
 
 OpenTable::OpenTable(int id, std::vector<Customer *> &customersList): tableId(id), customers(customersList) {}
 

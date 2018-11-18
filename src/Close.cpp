@@ -2,9 +2,9 @@
 // Created by yarin on 11/11/18.
 //
 
-#include "Restaurant.h"
-#include "Action.h"
-#include "Table.h"
+#include "../include/Restaurant.h"
+#include "../include/Action.h"
+#include "../include/Table.h"
 
 Close::Close(int id): tableId(id), Bill(0) {}
 

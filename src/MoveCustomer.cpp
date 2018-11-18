@@ -1,10 +1,10 @@
 //
 // Created by ravidlevy99 on 11/11/18.
 //
-#include "Action.h"
-#include "Table.h"
-#include "Restaurant.h"
-#include "Customer.h"
+#include "../include/Action.h"
+#include "../include/Table.h"
+#include "../include/Restaurant.h"
+#include "../include/Customer.h"
 
 MoveCustomer::MoveCustomer(int src, int dst, int customerId):srcTable(src), dstTable(dst), id(customerId) {}
 

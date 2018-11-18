@@ -2,8 +2,8 @@
 // Created by ravidlevy99 on 11/12/18.
 //
 
-#include "Action.h"
-#include "Restaurant.h"
+#include "../include/Action.h"
+#include "../include/Restaurant.h"
 
 PrintMenu::PrintMenu() {}
 
