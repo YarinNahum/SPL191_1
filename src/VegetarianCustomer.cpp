@@ -1,6 +1,6 @@
 #include "vector"
-#include "Customer.h"
-#include "Dish.h"
+#include "../include/Customer.h"
+#include "../include/Dish.h"
 
 
 VegetarianCustomer::VegetarianCustomer(std::string name, int id): Customer(name , id) {}

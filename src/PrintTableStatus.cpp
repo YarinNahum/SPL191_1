@@ -2,10 +2,10 @@
 // Created by ravidlevy99 on 11/12/18.
 //
 
-#include "Action.h"
-#include "Restaurant.h"
-#include "Table.h"
-#include "Customer.h"
+#include "../include/Action.h"
+#include "../include/Restaurant.h"
+#include "../include/Table.h"
+#include "../include/Customer.h"
 
 PrintTableStatus::PrintTableStatus(int id): tableId(id){}
 

@@ -1,8 +1,8 @@
 //
 // Created by yarin on 11/13/18.
 //
-#include "Action.h"
-#include "Restaurant.h"
+#include "../include/Action.h"
+#include "../include/Restaurant.h"
 
 PrintActionsLog::PrintActionsLog() {}
 

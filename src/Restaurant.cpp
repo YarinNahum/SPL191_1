@@ -1,9 +1,9 @@
 //
 // Created by ravidlevy99 on 11/8/18.
 //
-#include "Dish.h"
-#include "Table.h"
-#include "Restaurant.h"
+#include "../include/Dish.h"
+#include "../include/Table.h"
+#include "../include/Restaurant.h"
 #include <string>
 #include <vector>
 #include <sstream>

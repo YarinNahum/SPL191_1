@@ -3,7 +3,7 @@ project(SPL191_1)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(SPL191_1 AlchoholicCustomer.cpp BaseAction.cpp BackupRestaurant.cpp
-        CheapCustomer.cpp Close.cpp CloseAll.cpp Customer.cpp Dish.cpp Main.cpp MoveCustomer.cpp
-        OpenTable.cpp Order.cpp PrintActionsLog.cpp PrintMenu.cpp PrintTableStatus.cpp
-        Restaurant.cpp RestoreRestaurant.cpp SpicyCustomer.cpp Table.cpp VegetarianCustomer.cpp)
+add_executable(SPL191_1 src/AlchoholicCustomer.cpp src/BaseAction.cpp src/BackupRestaurant.cpp
+        src/CheapCustomer.cpp src/Close.cpp src/CloseAll.cpp src/Customer.cpp src/Dish.cpp src/Main.cpp src/MoveCustomer.cpp
+        src/OpenTable.cpp src/Order.cpp src/PrintActionsLog.cpp src/PrintMenu.cpp src/PrintTableStatus.cpp
+        src/Restaurant.cpp src/RestoreRestaurant.cpp src/SpicyCustomer.cpp src/Table.cpp src/VegetarianCustomer.cpp)
