@@ -27,7 +27,6 @@ std::string CloseAll::toString() const {
     return "closeall\n";
 }
 
-BaseAction* Close::clone() const
-{
+BaseAction* CloseAll::clone() const {
     return new CloseAll();
 }

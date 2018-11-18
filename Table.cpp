@@ -44,6 +44,12 @@ void Table::addCustomer(Customer *customer) {
     }
 }
 
+void Table::setOrderList(std::vector<OrderPair> newOrderList) {
+    orderList.clear();
+    for(auto OP : newOrderList)
+        orderList.push_back(OP);
+}
+
 int Table::getNumOfCustomers() const {
     return numOfCustomers;
 }
@@ -83,9 +89,6 @@ void Table::removeCustomer(int id) {
 void Table::closeThisTable() {
     setNumOfCustomers(0);
     closeTable();
-    for (int i = 0; i < orderList.size(); i++) {
-        orderList.erase(orderList.begin() + i);
-    }
     for (int i = 0; i < customersList.size(); i++) {
         delete (customersList[i]);
         customersList.erase(customersList.begin() + i);

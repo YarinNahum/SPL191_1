@@ -30,15 +30,4 @@ bool Customer::hasOrdered() const
     return ordered;
 }
 
-std::vector<Dish>& Customer::strategy(const std::vector<Dish> &menu, DishType dishType)
-{
-    std::vector<Dish> output;
 
-    for(auto dish: menu)
-    {
-        if(dish.getType() == dishType)
-            output.push_back(dish);
-    }
-
-    return output;
-}

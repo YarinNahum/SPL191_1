@@ -12,12 +12,18 @@ std::string SpicyCustomer::toString() const {
 std::vector<int> SpicyCustomer::order(const std::vector<Dish> &menu)
 {
     std::vector<int> output;
+    std::vector<Dish> spicy;
+    std::vector<Dish> beverage;
+    for(auto dish : menu)
+    {
+        if(dish.getType() == SPC)
+            spicy.push_back(dish);
+        if(dish.getType() == BVG)
+            beverage.push_back(dish);
+    }
 
     if(!hasOrdered())
     {
-        spicy = strategy(menu, SPC);
-        beverage = strategy(menu, BVG);
-
         int max = spicy[0].getPrice();
         int maxId = spicy[0].getId();
 

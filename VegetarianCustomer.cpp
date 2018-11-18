@@ -12,10 +12,17 @@ std::string VegetarianCustomer::toString() const
 
 std::vector<int> VegetarianCustomer::order(const std::vector<Dish> &menu)
 {
+    std::vector<Dish> vegetarian;
+    std::vector<Dish> beverage;
+    for(auto dish : menu)
+    {
+        if(dish.getType() == VEG)
+            vegetarian.push_back(dish);
+        if(dish.getType() == BVG)
+            beverage.push_back(dish);
+    }
     if(!hasOrdered())
     {
-        vegetarian = strategy(menu, VEG);
-        beverage = strategy(menu, BVG);
         setOrdered(true);
     }
 

@@ -79,7 +79,7 @@ public:
     Close(int id);
     void act(Restaurant &restaurant);
     std::string toString() const;
-	BaseAction* clone() const;
+	BaseAction* clone() const ;
 private:
     const int tableId;
     int Bill;

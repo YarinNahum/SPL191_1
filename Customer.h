@@ -14,7 +14,6 @@ public:
     int getId() const;
     void setOrdered(bool value);
     bool hasOrdered() const;
-    std::vector<Dish>& strategy(const std::vector<Dish> &menu, DishType dishType);
     virtual Customer* clone() =0;
 private:
     const std::string name;
@@ -30,8 +29,6 @@ public:
     std::string toString() const;
     Customer* clone();
 private:
-    std::vector<Dish> vegetarian;
-    std::vector<Dish> beverage;
 };
 
 
@@ -52,8 +49,6 @@ public:
     std::string toString() const;
     Customer* clone();
 private:
-    std::vector<Dish> spicy;
-    std::vector<Dish> beverage;
 };
 
 
@@ -62,12 +57,11 @@ public:
 	AlchoholicCustomer(std::string name, int id);
     std::vector<int> order(const std::vector<Dish> &menu);
     std::string toString() const;
-    int getRank() const;
-    void setRank(int value);
     Customer* clone();
 private:
-    int rank;
-    std::vector<Dish> alchocol;
+	bool hasFinished;
+	int maxIndex;
+	int currIndex;
 };
 
 

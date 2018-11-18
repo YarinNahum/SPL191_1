@@ -33,6 +33,7 @@ public:
     void copy(const Table &other);
     Table &operator= (Table&& other);
     Table(Table&& other);
+    void setOrderList(std::vector<OrderPair> newOrderList);
 
 private:
     int capacity;
