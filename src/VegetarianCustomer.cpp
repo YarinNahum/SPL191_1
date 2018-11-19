@@ -2,8 +2,8 @@
 #include "../include/Customer.h"
 #include "../include/Dish.h"
 
+VegetarianCustomer::VegetarianCustomer(std::string name, int id):Customer(name , id) {}
 
-VegetarianCustomer::VegetarianCustomer(std::string name, int id): Customer(name , id) {}
 std::string VegetarianCustomer::toString() const
 {
     std::string ret = getName() + "," + "veg ";

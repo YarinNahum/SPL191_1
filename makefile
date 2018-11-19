@@ -7,66 +7,66 @@ rest: bin/AlchoholicCustomer.o bin/BackupRestaurant.o bin/BaseAction.o bin/Cheap
 	
 # Depends on the source and header files
 
-bin/AlchoholicCustomer.o: src/AlchoholicCustomer.cpp
+bin/AlchoholicCustomer.o: src/AlchoholicCustomer.cpp include/Customer.h
 	g++ -g -Wall -Weffc++ -std=c++11 -c -Iinclude -o bin/AlchoholicCustomer.o src/AlchoholicCustomer.cpp
 
-bin/BaseAction.o: src/BaseAction.cpp
+bin/BaseAction.o: src/BaseAction.cpp include/Action.h
 	g++ -g -Wall -Weffc++ -std=c++11 -c -Iinclude -o bin/BaseAction.o src/BaseAction.cpp
 
-bin/BackupRestaurant.o: src/BackupRestaurant.cpp
-   	g++ -g -Wall -Weffc++ -std=c++11 -c -Iinclude -o bin/BackupRestaurant.o src/BackupRestaurant.cpp
+bin/BackupRestaurant.o: src/BackupRestaurant.cpp include/Action.h
+	g++ -g -Wall -Weffc++ -std=c++11 -c -Iinclude -o bin/BackupRestaurant.o src/BackupRestaurant.cpp
 
-bin/CheapCustomer.o: src/CheapCustomer.cpp
+bin/CheapCustomer.o: src/CheapCustomer.cpp include/Customer.h
 	g++ -g -Wall -Weffc++ -std=c++11 -c -Iinclude -o bin/CheapCustomer.o src/CheapCustomer.cpp
 
-bin/Close.o: src/Close.cpp
+bin/Close.o: src/Close.cpp include/Action.h
 	g++ -g -Wall -Weffc++ -std=c++11 -c -Iinclude -o bin/Close.o src/Close.cpp
 
-bin/CloseAll.o: src/CloseAll.cpp
+bin/CloseAll.o: src/CloseAll.cpp include/Action.h
 	g++ -g -Wall -Weffc++ -std=c++11 -c -Iinclude -o bin/CloseAll.o src/CloseAll.cpp
 
-bin/Customer.o: src/Customer.cpp
+bin/Customer.o: src/Customer.cpp include/Customer.h
 	g++ -g -Wall -Weffc++ -std=c++11 -c -Iinclude -o bin/Customer.o src/Customer.cpp
 
-bin/Dish.o: src/Dish.cpp
+bin/Dish.o: src/Dish.cpp include/Dish.h
 	g++ -g -Wall -Weffc++ -std=c++11 -c -Iinclude -o bin/Dish.o src/Dish.cpp
 
 bin/Main.o: src/Main.cpp
 	g++ -g -Wall -Weffc++ -std=c++11 -c -Iinclude -o bin/Main.o src/Main.cpp
 
-bin/MoveCustomer.o: src/MoveCustomer.cpp
+bin/MoveCustomer.o: src/MoveCustomer.cpp include/Action.h
 	g++ -g -Wall -Weffc++ -std=c++11 -c -Iinclude -o bin/MoveCustomer.o src/MoveCustomer.cpp
 
-bin/OpenTable.o: src/OpenTable.cpp
+bin/OpenTable.o: src/OpenTable.cpp include/Action.h
 	g++ -g -Wall -Weffc++ -std=c++11 -c -Iinclude -o bin/OpenTable.o src/OpenTable.cpp
 
-bin/Order.o: src/Order.cpp
+bin/Order.o: src/Order.cpp include/Action.h
 	g++ -g -Wall -Weffc++ -std=c++11 -c -Iinclude -o bin/Order.o src/Order.cpp
 
-bin/PrintActionsLog.o: src/PrintActionsLog.cpp
+bin/PrintActionsLog.o: src/PrintActionsLog.cpp include/Action.h
 	g++ -g -Wall -Weffc++ -std=c++11 -c -Iinclude -o bin/PrintActionsLog.o src/PrintActionsLog.cpp
 
-bin/PrintMenu.o: src/PrintMenu.cpp
+bin/PrintMenu.o: src/PrintMenu.cpp include/Action.h
 	g++ -g -Wall -Weffc++ -std=c++11 -c -Iinclude -o bin/PrintMenu.o src/PrintMenu.cpp
 
-bin/PrintTableStatus.o: src/PrintTableStatus.cpp
+bin/PrintTableStatus.o: src/PrintTableStatus.cpp include/Action.h
 	g++ -g -Wall -Weffc++ -std=c++11 -c -Iinclude -o bin/PrintTableStatus.o src/PrintTableStatus.cpp
 
-bin/Restaurant.o: src/Restaurant.cpp
+bin/Restaurant.o: src/Restaurant.cpp include/Restaurant.h
 	g++ -g -Wall -Weffc++ -std=c++11 -c -Iinclude -o bin/Restaurant.o src/Restaurant.cpp
 
-bin/RestoreRestaurant.o: src/RestoreRestaurant.cpp
+bin/RestoreRestaurant.o: src/RestoreRestaurant.cpp include/Action.h
 	g++ -g -Wall -Weffc++ -std=c++11 -c -Iinclude -o bin/RestoreRestaurant.o src/RestoreRestaurant.cpp
 
-bin/SpicyCustomer.o: src/SpicyCustomer.cpp
+bin/SpicyCustomer.o: src/SpicyCustomer.cpp include/Customer.h
 	g++ -g -Wall -Weffc++ -std=c++11 -c -Iinclude -o bin/SpicyCustomer.o src/SpicyCustomer.cpp
 
-bin/Table.o: src/Table.cpp
+bin/Table.o: src/Table.cpp include/Table.h
 	g++ -g -Wall -Weffc++ -std=c++11 -c -Iinclude -o bin/Table.o src/Table.cpp
 
-bin/VegetarianCustomer.o: src/VegetarianCustomer.cpp
+bin/VegetarianCustomer.o : src/VegetarianCustomer.cpp src/Customer.cpp 
 	g++ -g -Wall -Weffc++ -std=c++11 -c -Iinclude -o bin/VegetarianCustomer.o src/VegetarianCustomer.cpp
 
 # Cleaning build directory
-clean: 
+clean:
 	rm -f bin/*
