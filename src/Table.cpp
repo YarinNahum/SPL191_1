@@ -5,10 +5,8 @@
 #include "iostream"
 
 
-Table::Table(int t_capacity) : capacity(t_capacity), numOfCustomers(0), open(false),
-                               customersList(std::vector<Customer *>()), orderList(std::vector<OrderPair>()) {
-    setNumOfCustomers(customersList.size());
-}
+Table::Table(int t_capacity) : capacity(t_capacity), open(false),
+                               customersList(std::vector<Customer *>()), orderList(std::vector<OrderPair>()) {}
 
 int Table::getCapacity() const {
     return capacity;
@@ -36,11 +34,10 @@ void Table::closeTable() {
 }
 
 void Table::addCustomer(Customer *customer) {
-    if (numOfCustomers == capacity)
+    if (customersList.size() == capacity)
         std::cout << "Cannot add a customer to a full table \n";
     else {
         customersList.push_back(customer);
-        numOfCustomers++;
     }
 }
 
@@ -48,10 +45,6 @@ void Table::setOrderList(std::vector<OrderPair> newOrderList) {
     orderList.clear();
     for(auto OP : newOrderList)
         orderList.push_back(OP);
-}
-
-int Table::getNumOfCustomers() const {
-    return numOfCustomers;
 }
 
 std::vector<Customer *> &Table::getCustomers() {
@@ -69,29 +62,19 @@ int Table::getBill() {
     return bill;
 }
 
-void Table::setNumOfCustomers(int num) {
-    if (num > capacity)
-        std::cout << "Table capacity is lower than the number of customers\n ";
-    else
-        numOfCustomers = num;
-}
-
 void Table::removeCustomer(int id) {
     for (int i = 0; i < customersList.size(); i++)
         if (customersList[i]->getId() == id) {
             customersList[i] = nullptr;
             customersList.erase(customersList.begin() + i);
-            numOfCustomers--;
         }
 
 }
 
 void Table::closeThisTable() {
-    setNumOfCustomers(0);
     closeTable();
     for (int i = 0; i < customersList.size(); i++) {
         delete (customersList[i]);
-        numOfCustomers--;
     }
     customersList.clear();
     orderList.clear();
@@ -113,10 +96,6 @@ void Table::order(const std::vector<Dish> &menu) {
     std:: cout << description;
 }
 
-void Table::setCustomerList(const std::vector<Customer *> customerList) {
-    customersList = customerList;
-}
-
 Table* Table::clone() {
     return new Table(*this);
 }
@@ -128,7 +107,6 @@ Table::Table(const Table &other) {
 }
 void Table::copy(const Table &other) {
     this->open = other.open;
-    this->numOfCustomers = other.numOfCustomers;
     this->capacity = other.capacity;
     for(auto i : other.customersList)
         this->customersList.push_back((i->clone()));
@@ -142,7 +120,6 @@ void Table::clear() {
         delete (i);
     customersList.clear();
     orderList.clear();
-    numOfCustomers = 0;
     open = false;
 }
 Table:: ~Table()

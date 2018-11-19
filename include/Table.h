@@ -20,11 +20,8 @@ public:
     void openTable();
     void closeTable();
     int getBill();
-    int getNumOfCustomers() const;
     bool isOpen();
-    void setNumOfCustomers(int num);
     void closeThisTable();
-    void setCustomerList(const std::vector<Customer *> vector);
     Table(const Table& other); // Copy constructor
     Table* clone();
     ~Table();
@@ -37,8 +34,6 @@ public:
 
 private:
     int capacity;
-    int numOfCustomers;
-    int bill;
     bool open;
     std::vector<Customer*> customersList;
     std::vector<OrderPair> orderList; //A list of pairs for each order in a table - (customer_id, Dish)

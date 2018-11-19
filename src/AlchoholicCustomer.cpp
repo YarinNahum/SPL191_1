@@ -7,8 +7,7 @@
 AlchoholicCustomer::AlchoholicCustomer(std::string name, int id):Customer(name , id), hasFinished(false) , maxIndex(-1), currIndex(-1){}
 
 std::string AlchoholicCustomer::toString() const {
-    std::string ret = getName() + "," + "alc ";
-    return ret;
+    return getName() + "," + "alc ";
 }
 
 std::vector<int> AlchoholicCustomer::order(const std::vector<Dish> &menu)

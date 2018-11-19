@@ -1,13 +1,11 @@
 #include "vector"
-#include "../include/Customer.h"
 #include "../include/Dish.h"
+#include "../include/Customer.h"
 
-VegetarianCustomer::VegetarianCustomer(std::string name, int id):Customer(name , id) {}
+VegetarianCustomer::VegetarianCustomer(std::string name, int id): Customer(name , id) {}
 
-std::string VegetarianCustomer::toString() const
-{
-    std::string ret = getName() + "," + "veg ";
-    return ret;
+std::string VegetarianCustomer::toString() const {
+    return getName() + "," + "veg ";
 }
 
 std::vector<int> VegetarianCustomer::order(const std::vector<Dish> &menu)

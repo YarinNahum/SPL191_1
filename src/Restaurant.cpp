@@ -141,7 +141,6 @@ void Restaurant::start()
             input.erase(0 ,5);
             string token = input.substr(0 , input.find(" "));
             int tableId = stoi(token);
-            Table* t = getTable(tableId);
             input.erase(0,token.length()+1);
             vector <string> tokens = getCustList(input);
             vector<Customer*> customerList;
@@ -153,14 +152,14 @@ void Restaurant::start()
                 cust.erase(0,pos + 1);
                 string Type = cust;
                 Customer * C;
-                if(Type == "veg")
-                    C= new VegetarianCustomer(Name , cusID);
-                if(Type == "chp")
+                if(Type.substr(0,3) == "chp")
                     C = new CheapCustomer(Name , cusID);
-                if(Type == "spc")
+                else if(Type.substr(0,3) == "spc")
                     C = new SpicyCustomer(Name, cusID);
-                if(Type == "alc")
-                    C= new AlchoholicCustomer(Name , cusID);
+                else if(Type.substr(0,3) == "alc")
+                    C = new AlchoholicCustomer(Name , cusID);
+                else if(Type.substr(0,3) == "veg")
+                    C = new VegetarianCustomer(Name , cusID);
                 customerList.push_back(C);
                 cusID++;
             }

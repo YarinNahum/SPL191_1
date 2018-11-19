@@ -2,8 +2,8 @@
 all: rest
 
 # Tool invocations
-rest: bin/AlchoholicCustomer.o bin/BackupRestaurant.o bin/BaseAction.o bin/CheapCustomer.o bin/Close.o bin/CloseAll.o bin/Customer.o bin/Dish.o bin/Main.o bin/MoveCustomer.o bin/OpenTable.o bin/Order.o bin/PrintActionsLog.o bin/PrintMenu.o bin/PrintTableStatus.o bin/Restaurant.o bin/RestoreRestaurant.o bin/SpicyCustomer.o bin/Table.o bin/VegetarianCustomer
-	g++ -o bin/rest bin/AlchoholicCustomer.o bin/BackupRestaurant.o bin/BaseAction.o bin/CheapCustomer.o bin/Close.o bin/CloseAll.o bin/Customer.o bin/Dish.o bin/Main.o bin/MoveCustomer.o bin/OpenTable.o bin/Order.o bin/PrintActionsLog.o bin/PrintMenu.o bin/PrintTableStatus.o bin/Restaurant.o bin/RestoreRestaurant.o bin/SpicyCustomer.o bin/Table.o bin/VegetarianCustomer
+rest: bin/AlchoholicCustomer.o bin/BackupRestaurant.o bin/BaseAction.o bin/CheapCustomer.o bin/Close.o bin/CloseAll.o bin/Customer.o bin/Dish.o bin/Main.o bin/MoveCustomer.o bin/OpenTable.o bin/Order.o bin/PrintActionsLog.o bin/PrintMenu.o bin/PrintTableStatus.o bin/Restaurant.o bin/RestoreRestaurant.o bin/SpicyCustomer.o bin/Table.o bin/VegetarianCustomer.o
+	g++ -o bin/rest bin/AlchoholicCustomer.o bin/BackupRestaurant.o bin/BaseAction.o bin/CheapCustomer.o bin/Close.o bin/CloseAll.o bin/Customer.o bin/Dish.o bin/Main.o bin/MoveCustomer.o bin/OpenTable.o bin/Order.o bin/PrintActionsLog.o bin/PrintMenu.o bin/PrintTableStatus.o bin/Restaurant.o bin/RestoreRestaurant.o bin/SpicyCustomer.o bin/Table.o bin/VegetarianCustomer.o
 	
 # Depends on the source and header files
 
@@ -64,7 +64,7 @@ bin/SpicyCustomer.o: src/SpicyCustomer.cpp include/Customer.h
 bin/Table.o: src/Table.cpp include/Table.h
 	g++ -g -Wall -Weffc++ -std=c++11 -c -Iinclude -o bin/Table.o src/Table.cpp
 
-bin/VegetarianCustomer.o : src/VegetarianCustomer.cpp src/Customer.cpp 
+bin/VegetarianCustomer.o: src/VegetarianCustomer.cpp include/Customer.h
 	g++ -g -Wall -Weffc++ -std=c++11 -c -Iinclude -o bin/VegetarianCustomer.o src/VegetarianCustomer.cpp
 
 # Cleaning build directory

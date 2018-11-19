@@ -4,12 +4,12 @@
 #include "../include/Action.h"
 #include "../include/Restaurant.h"
 
-OpenTable::OpenTable(int id, std::vector<Customer *> &customersList): tableId(id), customers(customersList) {}
+OpenTable::OpenTable(int id, std::vector<Customer *> &customersList): tableId(id), customers(customersList), description("") {}
 
 void OpenTable::act(Restaurant &restaurant) {
     Table* t = restaurant.getTable(tableId);
     description = "open " + std::to_string(tableId) + " ";
-    for(auto i :customers )
+    for(auto i : customers)
     {
         description += i->toString();
     }
@@ -20,20 +20,21 @@ void OpenTable::act(Restaurant &restaurant) {
     else {
         if(t->isOpen()) {
             error("Error: Table does not exist or is already open\n");
-            description += getErrorMsg();
         }
         else {
             for(auto C : customers)
                 t->addCustomer(C);
             t->openTable();
-            description += "Completed\n";
             complete();
         }
     }
 }
 
 std::string OpenTable::toString() const {
-        return description ;
+    if(getStatus() == COMPLETED)
+        return description + "Completed\n";
+    else
+        return description + getErrorMsg();
 }
 
 BaseAction* OpenTable::clone() const
@@ -55,7 +56,7 @@ void OpenTable::clear()
     {
         delete customer;
     }
-
+    description= nullptr;
     customers.clear();
 }
 
@@ -79,6 +80,7 @@ OpenTable::OpenTable(OpenTable&& openTable): tableId(openTable.tableId), descrip
         openTable.customers[i] = nullptr;
     }
     openTable.customers.clear();
+    openTable.description.clear();
 }
 
 OpenTable& OpenTable::operator=(const OpenTable &other) {
