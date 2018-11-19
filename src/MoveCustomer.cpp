@@ -14,7 +14,7 @@ void MoveCustomer::act(Restaurant &restaurant)
         Table* source = restaurant.getTable(srcTable);
         Table* destination = restaurant.getTable(dstTable);
 
-        if(source == nullptr || destination == nullptr || !source->isOpen() || !destination->isOpen() || destination->getCustomers().size() < destination->getCapacity()) {
+        if(source == nullptr || destination == nullptr || !source->isOpen() || !destination->isOpen() || destination->getCustomers().size() >= destination->getCapacity()) {
             error("Error: Cannot move customer\n");
             description = getErrorMsg();
         }
@@ -49,7 +49,8 @@ void MoveCustomer::act(Restaurant &restaurant)
 std::string MoveCustomer::toString() const
 {
     if(getStatus() == ERROR)
-        return  "move" + std::to_string(srcTable) + " " + std::to_string(dstTable) + " " + std::to_string(id) + " Error: Cannot move customer\n";
+        return  "move " + std::to_string(srcTable) + " " + std::to_string(dstTable) + " " + std::to_string(id) + " Error: Cannot move customer\n";
+    return "move " + std::to_string(srcTable) + " " + std::to_string(dstTable) + " " + std::to_string(id) + " Completed\n";
 }
 
 BaseAction* MoveCustomer::clone() const

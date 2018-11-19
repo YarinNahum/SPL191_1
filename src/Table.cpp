@@ -79,7 +79,7 @@ void Table::setNumOfCustomers(int num) {
 void Table::removeCustomer(int id) {
     for (int i = 0; i < customersList.size(); i++)
         if (customersList[i]->getId() == id) {
-            delete (customersList[i]);
+            customersList[i] = nullptr;
             customersList.erase(customersList.begin() + i);
             numOfCustomers--;
         }

@@ -14,15 +14,17 @@ void OpenTable::act(Restaurant &restaurant) {
         description += i->toString();
     }
     if(t == nullptr) {
-        error(description + "Error: Table does not exits or is already open");
+        error(description + "Error: Table does not exist or is already open");
         description = getErrorMsg();
     }
     else {
         if(t->isOpen()) {
-            error(description + "Error: Table does not exits or is already open\n");
-            description = getErrorMsg();
+            error("Error: Table does not exist or is already open\n");
+            description += getErrorMsg();
         }
         else {
+            for(auto C : customers)
+                t->addCustomer(C);
             t->openTable();
             description += "Completed\n";
             complete();
@@ -64,12 +66,12 @@ OpenTable::~OpenTable()
     clear();
 }
 
-OpenTable::OpenTable(const OpenTable& openTable): tableId(openTable.tableId)
+OpenTable::OpenTable(const OpenTable& openTable): tableId(openTable.tableId), description(openTable.description)
 {
     copy(openTable);
 }
 
-OpenTable::OpenTable(OpenTable&& openTable): tableId(openTable.tableId)
+OpenTable::OpenTable(OpenTable&& openTable): tableId(openTable.tableId), description(openTable.description)
 {
     copy(openTable);
     for(int i = 0 ; i < openTable.customers.size() ; i++)

@@ -103,7 +103,7 @@ void Restaurant::start()
 {
     int cusID = 0;
     string input;
-    cout << "Restaurant is open!\n";
+    cout << "Restaurant is now open!\n";
     getline(cin , input);
     while (input !="closeall")
     {
@@ -162,10 +162,8 @@ void Restaurant::start()
                 if(Type == "alc")
                     C= new AlchoholicCustomer(Name , cusID);
                 customerList.push_back(C);
-                t->addCustomer(C);
                 cusID++;
             }
-
             BaseAction *action = new OpenTable(tableId , customerList);
             action->act(*this);
             actionsLog.push_back(action);

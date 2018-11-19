@@ -16,11 +16,11 @@ void PrintTableStatus::act(Restaurant &restaurant)
         Table* t = restaurant.getTable(tableId);
 
         if(t == nullptr || !t->isOpen())
-            std::cout<< "Table " + std::to_string(tableId) + " is status: closed\n";
+            std::cout<< "Table " + std::to_string(tableId) + " status: closed\n";
 
         else
         {
-            std::cout<< "Table " + std::to_string(tableId) + " is status: open\n";
+            std::cout<< "Table " + std::to_string(tableId) + " status: open\n";
             std::cout<< "Customers:\n";
             for(auto customer: t->getCustomers())
             {
