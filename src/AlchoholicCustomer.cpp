@@ -47,24 +47,29 @@ std::vector<int> AlchoholicCustomer::order(const std::vector<Dish> &menu)
     }
     if(!hasFinished)
     {
-        int price = alchocol[currIndex].getPrice();
-        int nextIndex = maxIndex;
-        for(int i = 0 ; i < alchocol.size() ; i++)
+        int nextPrice = alchocol[maxIndex].getPrice();
+        int currPrice = alchocol[currIndex].getPrice();
+        int nextIndex = currIndex;
+        for(int i = 0 ; i < alchocol.size(); i++)
         {
-            if(alchocol[i].getPrice() > price)
+            if( alchocol[i].getPrice() >currPrice  && alchocol[i].getPrice() <= nextPrice)
             {
-                if (alchocol[i].getPrice() < alchocol[nextIndex].getPrice())
+                nextPrice = alchocol[i].getPrice();
+                nextIndex = i;
+            }
+            if(alchocol[i].getPrice() == currPrice) {
+                if (alchocol[i].getId() > alchocol[currIndex].getId()) {
+                    nextPrice = alchocol[i].getPrice();
                     nextIndex = i;
-                else if (alchocol[i].getPrice() == alchocol[nextIndex].getPrice() &&
-                         alchocol[i].getId() < alchocol[nextIndex].getId())
+                }
+            }
+            if(alchocol[i].getPrice() == nextPrice) {
+                if (alchocol[i].getId() < alchocol[nextIndex].getId())
                     nextIndex = i;
             }
-            else if(alchocol[i].getPrice() == alchocol[nextIndex].getPrice())
-                if(alchocol[i].getId() > alchocol[currIndex].getId() && alchocol[i].getId() < alchocol[maxIndex].getId())
-                    nextIndex = i;
         }
         output.push_back(alchocol[nextIndex].getId());
-        currIndex == nextIndex;
+        currIndex = nextIndex;
         if(currIndex == maxIndex) // If the dish is the most expensive one, than the customer will no longer be able to order.
             hasFinished = true;
     }

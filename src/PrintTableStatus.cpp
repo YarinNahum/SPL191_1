@@ -30,7 +30,7 @@ void PrintTableStatus::act(Restaurant &restaurant)
             std::cout<< "Orders:\n";
             for(auto order: t->getOrders())
             {
-                std::cout<< order.second.getName() + " " + std::to_string(order.second.getPrice()) + "NIS " +  std::to_string(order.second.getId()) + "\n";
+                std::cout<< order.second.getName() + " " + std::to_string(order.second.getPrice()) + "NIS " +  std::to_string(order.first) + "\n";
             }
             std::cout<< "Current Bill: " + std::to_string(t->getBill()) + "NIS\n";
         }

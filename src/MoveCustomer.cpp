@@ -48,7 +48,8 @@ void MoveCustomer::act(Restaurant &restaurant)
 
 std::string MoveCustomer::toString() const
 {
-    return  "move" + std::to_string(srcTable) + " " + std::to_string(dstTable) + " " + std::to_string(id) + "\n";
+    if(getStatus() == ERROR)
+        return  "move" + std::to_string(srcTable) + " " + std::to_string(dstTable) + " " + std::to_string(id) + " Error: Cannot move customer\n";
 }
 
 BaseAction* MoveCustomer::clone() const
