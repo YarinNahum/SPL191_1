@@ -40,11 +40,9 @@ std::vector<std::string> split(const std::string &string, char delimiter)
 
 void Restaurant::ReadFile(const string& configFilePath)
 {
-
     ifstream stream(configFilePath);
 
-    int counter(0), hashtags(0);
-
+    int counter(0);
     string line;
     std::vector<std::string> strings;
 
@@ -53,38 +51,36 @@ void Restaurant::ReadFile(const string& configFilePath)
     while (stream)
     {
         line = trim(line);
-
-        if(line.compare("") != 0)
+        if(line == "#tables description")
         {
-            if(line[0] == '#')
-                hashtags++;
-
-            else
-                {
+            getline(stream, line);
+            line = trim(line);
+            strings = split(line, ',');
+            for (auto string: strings)
+                tables.push_back(new Table(stoi(string)));
+        }
+        else if (line == "#Menu")
+        {
+            getline(stream, line);
+            while (stream)
+            {
+                line = trim(line);
                 strings = split(line, ',');
+                DishType type;
 
-                if (hashtags == 3)
-                    for (auto string: strings)
-                        tables.push_back(new Table(stoi(string)));
+                if (strings[1].compare("ALC") == 0) type = ALC;
+                else if (strings[1].compare("BVG") == 0) type = BVG;
+                else if (strings[1].compare("SPC") == 0) type = SPC;
+                else type = VEG;
 
-                else if (hashtags == 4)
-                {
-                    DishType type;
-
-                    if (strings[1].compare("ALC") == 0) type = ALC;
-                    else if (strings[1].compare("BVG") == 0) type = BVG;
-                    else if (strings[1].compare("SPC") == 0) type = SPC;
-                    else type = VEG;
-
-                    menu.push_back(Dish(counter, strings[0], stoi(strings[2]), type));
-                    counter++;
-                }
+                menu.push_back(Dish(counter, strings[0], stoi(strings[2]), type));
+                counter++;
+                getline(stream, line);
             }
         }
-
-        getline(stream, line);
+        if(stream)
+            getline(stream, line);
     }
-
     stream.close();
 }
 
