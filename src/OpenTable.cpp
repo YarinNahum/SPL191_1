@@ -4,7 +4,7 @@
 #include "../include/Action.h"
 #include "../include/Restaurant.h"
 
-OpenTable::OpenTable(int id, std::vector<Customer *> &customersList): tableId(id){
+OpenTable::OpenTable(int id, std::vector<Customer *> &customersList):description(""), tableId(id),customers(std::vector<Customer*>()) {
     for(auto c : customersList)
         customers.push_back(c);
 }
@@ -85,7 +85,7 @@ OpenTable::~OpenTable()
     clear();
 }
 
-OpenTable::OpenTable(const OpenTable& openTable): tableId(openTable.tableId), description(openTable.description)
+OpenTable::OpenTable(const OpenTable& openTable):description(openTable.description), tableId(openTable.tableId), customers(std::vector<Customer*>())
 {
     if (openTable.getStatus() == COMPLETED)
         complete();
@@ -94,10 +94,10 @@ OpenTable::OpenTable(const OpenTable& openTable): tableId(openTable.tableId), de
     copy(openTable);
 }
 
-OpenTable::OpenTable(OpenTable&& openTable): tableId(openTable.tableId), description(openTable.description)
+OpenTable::OpenTable(OpenTable&& openTable):description(openTable.description), tableId(openTable.tableId), customers(std::vector<Customer*>())
 {
     copy(openTable);
-    for(int i = 0 ; i < openTable.customers.size() ; i++) {
+    for(int i = 0 ; i < (int)(openTable.customers.size()) ; i++) {
         openTable.customers[i] = nullptr;
     }
     openTable.description.clear();

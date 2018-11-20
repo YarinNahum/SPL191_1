@@ -140,7 +140,7 @@ void Restaurant::start()
             input.erase(0,token.length()+1);
             vector <string> tokens = getCustList(input);
             vector<Customer*> customerList;
-            for(int i = 0 ; i < tokens.size() ; i++)
+            for(int i = 0 ; i < (int)(tokens.size()) ; i++)
             {
                 string cust = tokens[i];
                 int pos = cust.find(",");
@@ -240,7 +240,7 @@ std:: vector<int> Restaurant::getNumbers(std::string input) { // A helper functi
 
 Table* Restaurant::getTable(int ind)
 {
-    if(ind >= tables.size())
+    if(ind >= (int)(tables.size()))
         return nullptr;
     return tables.at(ind);
 }
@@ -297,7 +297,7 @@ Restaurant::~Restaurant()
     clear();
 }
 
-Restaurant::Restaurant(const Restaurant& restaurant): tables(std::vector <Table*>()), menu(std::vector <Dish>()), actionsLog(std::vector <BaseAction*>())
+Restaurant::Restaurant(const Restaurant& restaurant):open(restaurant.open), tables(std::vector <Table*>()), menu(std::vector <Dish>()), actionsLog(std::vector <BaseAction*>())
 {
     copy(restaurant);
 }
@@ -307,18 +307,19 @@ Restaurant& Restaurant::operator=(const Restaurant &restaurant) {
         return *this;
     clear();
     copy(restaurant);
+    return *this;
 }
 
-Restaurant::Restaurant(Restaurant &&restaurant): tables(std::vector <Table*>()), menu(std::vector <Dish>()), actionsLog(std::vector <BaseAction*>())
+Restaurant::Restaurant(Restaurant &&restaurant):open(restaurant.open), tables(std::vector <Table*>()), menu(std::vector <Dish>()), actionsLog(std::vector <BaseAction*>())
 {
     copy(restaurant);
-    for(int i =0 ; i < restaurant.tables.size() ; i++)
+    for(int i =0 ; i < (int)(restaurant.tables.size()) ; i++)
     {
         restaurant.tables[i] = nullptr;
     }
     restaurant.tables.clear();
 
-    for(int i = 0 ; i < restaurant.actionsLog.size() ; i++)
+    for(int i = 0 ; i < (int)(restaurant.actionsLog.size()) ; i++)
     {
         restaurant.actionsLog[i] = nullptr;
     }
@@ -332,13 +333,13 @@ Restaurant& Restaurant::operator=(Restaurant &&restaurant) {
     clear();
     copy(restaurant);
 
-    for(int i =0 ; i < restaurant.tables.size() ; i++)
+    for(int i =0 ; i < (int)(restaurant.tables.size()) ; i++)
     {
         restaurant.tables[i] =nullptr;
     }
     restaurant.tables.clear();
 
-    for(int i = 0 ; i < restaurant.actionsLog.size() ; i++)
+    for(int i = 0 ; i < (int)(restaurant.actionsLog.size()) ; i++)
     {
         restaurant.actionsLog[i] = nullptr;
     }

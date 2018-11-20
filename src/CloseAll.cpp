@@ -11,7 +11,7 @@ CloseAll::CloseAll() {}
 void CloseAll::act(Restaurant &restaurant) {
     if(getStatus() == PENDING)
     {
-        for (int i = 0; i < restaurant.getTables().size(); i++) {
+        for (int i = 0; i < (int)(restaurant.getTables().size()); i++) {
             if (restaurant.getTables()[i]->isOpen()) {
                 BaseAction *c = new Close(i);
                 c->act(restaurant);

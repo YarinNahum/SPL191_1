@@ -14,7 +14,7 @@ void MoveCustomer::act(Restaurant &restaurant)
         Table* source = restaurant.getTable(srcTable);
         Table* destination = restaurant.getTable(dstTable);
 
-        if(source == nullptr || destination == nullptr || !source->isOpen() || !destination->isOpen() || destination->getCustomers().size() >= destination->getCapacity()) {
+        if(source == nullptr || destination == nullptr || !source->isOpen() || !destination->isOpen() || (int)(destination->getCustomers().size()) >= destination->getCapacity()) {
             error("Error: Cannot move customer\n");
             description = getErrorMsg();
         }
@@ -26,7 +26,7 @@ void MoveCustomer::act(Restaurant &restaurant)
             }
             else {
                 std::vector <OrderPair> newOrderList;
-                for (int i = 0; i < source->getOrders().size(); i++) // Adding order from the customer to the new table.
+                for (int i = 0; i < (int)(source->getOrders().size()); i++) // Adding order from the customer to the new table.
                     if (source->getOrders()[i].first == customer->getId())
                         destination->getOrders().push_back(source->getOrders()[i]);
                     else

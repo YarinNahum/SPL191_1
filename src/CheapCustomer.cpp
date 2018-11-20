@@ -20,7 +20,7 @@ std::vector<int> CheapCustomer::order(const std::vector<Dish> &menu)
 
         for (auto dish: menu)
         {
-            if (dish.getPrice() < min | (dish.getPrice() == min & dish.getId() < minId))
+            if ((dish.getPrice() < min) | ((dish.getPrice() == min) & (dish.getId() < minId)))
             {
                 min = dish.getPrice();
                 minId = dish.getId();

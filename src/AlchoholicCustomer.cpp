@@ -20,7 +20,7 @@ std::vector<int> AlchoholicCustomer::order(const std::vector<Dish> &menu)
 
     if(maxIndex == -1) {
         int tmp = 0;
-        for (int i = 0; i < alchocol.size(); i++) { // Finding the most expensive ALC dish.
+        for (int i = 0; i < (int)(alchocol.size()); i++) { // Finding the most expensive ALC dish.
             if (alchocol[i].getPrice() > alchocol[tmp].getPrice())
                 tmp = i;
             else if (alchocol[i].getPrice() == alchocol[tmp].getPrice())
@@ -32,7 +32,7 @@ std::vector<int> AlchoholicCustomer::order(const std::vector<Dish> &menu)
     }
     if(currIndex == -1) {
         int tmp = 0;
-        for (int i = 1; i < alchocol.size(); i++) {
+        for (int i = 1; i < (int)(alchocol.size()); i++) {
             if (alchocol[i].getPrice() < alchocol[tmp].getPrice())
                 tmp = i;
             else if (alchocol[i].getPrice() == alchocol[tmp].getPrice())
@@ -49,7 +49,7 @@ std::vector<int> AlchoholicCustomer::order(const std::vector<Dish> &menu)
         int nextPrice = alchocol[maxIndex].getPrice();
         int currPrice = alchocol[currIndex].getPrice();
         int nextIndex = currIndex;
-        for(int i = 0 ; i < alchocol.size(); i++)
+        for(int i = 0 ; i < (int)(alchocol.size()); i++)
         {
             if( alchocol[i].getPrice() >currPrice  && alchocol[i].getPrice() <= nextPrice)
             {

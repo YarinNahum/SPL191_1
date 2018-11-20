@@ -4,7 +4,7 @@
 
 #include "../include/Action.h"
 
-BaseAction::BaseAction(): status(PENDING) {}
+BaseAction::BaseAction():description(""),errorMsg("") ,status(PENDING) {}
 
 ActionStatus BaseAction::getStatus() const
 {
