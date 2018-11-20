@@ -21,7 +21,6 @@ public:
     void closeTable();
     int getBill();
     bool isOpen();
-    void closeThisTable();
     Table(const Table& other); // Copy constructor
     Table* clone();
     ~Table();

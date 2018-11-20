@@ -5,12 +5,8 @@
 #include "../include/Restaurant.h"
 
 OpenTable::OpenTable(int id, std::vector<Customer *> &customersList): tableId(id){
-    for(auto i : customersList) {
-        customers.push_back(i->clone());
-        delete i;
-        i = nullptr;
-    }
-    customersList.clear();
+    for(auto c : customersList)
+        customers.push_back(c);
 }
 
 void OpenTable::act(Restaurant &restaurant) {
@@ -23,16 +19,26 @@ void OpenTable::act(Restaurant &restaurant) {
     if(t == nullptr) {
         error(description + "Error: Table does not exist or is already open\n");
         description = getErrorMsg();
+        for(auto c : customers) {
+            if(c != nullptr)
+                delete c;
+            c = nullptr;
+        }
     }
     else {
         if(t->isOpen()) {
             error("Error: Table does not exist or is already open\n");
+            for(auto c : customers) {
+                if(c != nullptr)
+                    delete c;
+                c = nullptr;
+            }
         }
         else {
+            t->openTable();
             for(auto c : customers) {
                 t->addCustomer(c);
             }
-            t->openTable();
             complete();
         }
     }
@@ -64,27 +70,27 @@ void OpenTable::copy(const OpenTable &openTable)
 
 void OpenTable::clear()
 {
-    for(auto customer: customers)
-    {
-        if(customer != nullptr) {
-            delete customer;
+    for(auto customer: customers) {
+        if (customer != nullptr) {
             customer = nullptr;
         }
     }
-    description = nullptr;
     customers.clear();
 }
 
-//Rule of 5
+//Rule of 3
 
 OpenTable::~OpenTable()
 {
     clear();
 }
 
-OpenTable::OpenTable(const OpenTable& openTable): tableId(openTable.tableId)
+OpenTable::OpenTable(const OpenTable& openTable): tableId(openTable.tableId), description(openTable.description)
 {
-    description = openTable.description;
+    if (openTable.getStatus() == COMPLETED)
+        complete();
+    else if(openTable.getStatus() == ERROR)
+        error(openTable.getErrorMsg());
     copy(openTable);
 }
 
@@ -97,19 +103,3 @@ OpenTable::OpenTable(OpenTable&& openTable): tableId(openTable.tableId), descrip
     openTable.description.clear();
 }
 
-OpenTable& OpenTable::operator=(const OpenTable &other) {
-    if(this == &other)
-        return *this;
-    clear();
-    copy(other);
-}
-
-OpenTable& OpenTable::operator=(OpenTable &&other) {
-    if(this == &other)
-        return *this;
-    clear();
-    copy(other);
-    for(int i = 0; i < other.customers.size() ; i++)
-        other.customers[i] = nullptr;
-    return *this;
-}

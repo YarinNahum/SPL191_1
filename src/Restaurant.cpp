@@ -94,11 +94,6 @@ std::vector<Dish>& Restaurant::getMenu()
     return menu;
 }
 
-int Restaurant::getNumOfTables() const
-{
-    return tables.size();
-}
-
 void Restaurant::start()
 {
     int cusID = 0;
@@ -243,13 +238,6 @@ std:: vector<int> Restaurant::getNumbers(std::string input) { // A helper functi
     return output;
 }
 
-int Restaurant::findTableID(string input) { // A helper function to find the tableID for the open action
-    string token = input.substr(0 , input.find(" "));
-    int i = stoi(token);
-    input.erase(0 , token . length()+1);
-    return i;
-}
-
 Table* Restaurant::getTable(int ind)
 {
     if(ind >= tables.size())
@@ -309,7 +297,7 @@ Restaurant::~Restaurant()
     clear();
 }
 
-Restaurant::Restaurant(const Restaurant& restaurant)
+Restaurant::Restaurant(const Restaurant& restaurant): tables(std::vector <Table*>()), menu(std::vector <Dish>()), actionsLog(std::vector <BaseAction*>())
 {
     copy(restaurant);
 }
@@ -321,7 +309,7 @@ Restaurant& Restaurant::operator=(const Restaurant &restaurant) {
     copy(restaurant);
 }
 
-Restaurant::Restaurant(Restaurant &&restaurant)
+Restaurant::Restaurant(Restaurant &&restaurant): tables(std::vector <Table*>()), menu(std::vector <Dish>()), actionsLog(std::vector <BaseAction*>())
 {
     copy(restaurant);
     for(int i =0 ; i < restaurant.tables.size() ; i++)

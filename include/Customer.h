@@ -15,6 +15,7 @@ public:
     void setOrdered(bool value);
     bool hasOrdered() const;
     virtual Customer* clone() =0;
+    virtual ~Customer(){}
 private:
     const std::string name;
     const int id;

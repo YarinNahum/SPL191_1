@@ -37,4 +37,3 @@ std::vector<int> CheapCustomer::order(const std::vector<Dish> &menu)
 Customer* CheapCustomer::clone() {
     return new CheapCustomer(*this);
 }
-

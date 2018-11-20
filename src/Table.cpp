@@ -71,14 +71,6 @@ void Table::removeCustomer(int id) {
         }
 }
 
-void Table::closeThisTable() {
-    closeTable();
-    for (auto i: customersList) {
-        delete i;
-    }
-    customersList.clear();
-    orderList.clear();
-}
 
 void Table::order(const std::vector<Dish> &menu) {
     std::string description = "";
@@ -102,9 +94,10 @@ Table* Table::clone() {
 
 //Rule of 5
 
-Table::Table(const Table &other) {
+Table::Table(const Table &other):capacity(other.capacity), open(other.open){
     copy(other);
 }
+
 void Table::copy(const Table &other) {
     this->open = other.open;
     this->capacity = other.capacity;
@@ -147,12 +140,9 @@ Table& Table::operator=(Table &&other) {
     return *this;
 }
 
-Table::Table(Table &&other) {
+Table::Table(Table &&other):capacity(other.capacity) , open(other.open){
     copy(other);
     for(int i = 0 ; i < other.customersList.size() ; i++)
         other.customersList[i] = nullptr;
     other.customersList.clear();
 }
-
-
-

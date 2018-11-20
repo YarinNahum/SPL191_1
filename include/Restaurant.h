@@ -21,14 +21,12 @@ public:
 	void clear();
 	Restaurant(const std::string &configFilePath);
     void start();
-    int getNumOfTables() const;
     Table* getTable(int ind);
 	const std::vector<BaseAction*>& getActionsLog() const; // Return a reference to the history of actions
     std::vector<Dish>& getMenu();
     std::vector<Table*> getTables();
     void CloseRestaurant();
     std:: vector<int> getNumbers(std::string input);
-    int findTableID(string input);
     std::vector<string> getCustList(std::string input);
 private:
     bool open;
