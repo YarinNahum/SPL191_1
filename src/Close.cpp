@@ -19,7 +19,7 @@ void Close::act(Restaurant &restaurant) {
         Bill = t->getBill();
         std::cout << "Table " + std::to_string(tableId) + " was closed. Bill " + std::to_string(Bill) +"NIS\n";
         complete();
-        t->closeTable();
+        t->clear();
     }
 }
 

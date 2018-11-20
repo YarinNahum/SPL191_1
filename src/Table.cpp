@@ -33,6 +33,7 @@ void Table::closeTable() {
     open = false;
 }
 
+
 void Table::addCustomer(Customer *customer) {
     if ((int)(customersList.size()) == capacity)
         std::cout << "Cannot add a customer to a full table \n";
