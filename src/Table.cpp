@@ -67,14 +67,14 @@ void Table::removeCustomer(int id) {
         if (customersList[i]->getId() == id) {
             customersList[i] = nullptr;
             customersList.erase(customersList.begin() + i);
+            return;
         }
-
 }
 
 void Table::closeThisTable() {
     closeTable();
-    for (int i = 0; i < customersList.size(); i++) {
-        delete (customersList[i]);
+    for (auto i: customersList) {
+        delete i;
     }
     customersList.clear();
     orderList.clear();
@@ -116,8 +116,11 @@ void Table::copy(const Table &other) {
 }
 
 void Table::clear() {
-    for(auto i : customersList)
-        delete (i);
+    for (auto i : customersList)
+        if (i != nullptr){
+            delete (i);
+            i = nullptr;
+        }
     customersList.clear();
     orderList.clear();
     open = false;

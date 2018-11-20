@@ -6,7 +6,7 @@
 CheapCustomer::CheapCustomer(std::string name, int id):Customer(name , id){}
 
 std::string CheapCustomer::toString() const {
-    return getName() + "," + "chp ";
+    return getName() + ",chp ";
 }
 
 std::vector<int> CheapCustomer::order(const std::vector<Dish> &menu)

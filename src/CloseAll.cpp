@@ -13,7 +13,7 @@ void CloseAll::act(Restaurant &restaurant) {
     {
         for (int i = 0; i < restaurant.getTables().size(); i++) {
             if (restaurant.getTables()[i]->isOpen()) {
-                Close *c = new Close(i);
+                BaseAction *c = new Close(i);
                 c->act(restaurant);
                 delete c;
             }

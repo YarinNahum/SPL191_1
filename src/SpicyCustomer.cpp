@@ -5,7 +5,7 @@
 SpicyCustomer::SpicyCustomer(std::string name, int id):Customer(name , id) {}
 
 std::string SpicyCustomer::toString() const {
-    return getName() + "," + "spc ";
+    return getName() + ",spc ";
 }
 
 std::vector<int> SpicyCustomer::order(const std::vector<Dish> &menu)

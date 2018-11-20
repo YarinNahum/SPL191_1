@@ -105,6 +105,7 @@ void Restaurant::start()
     string input;
     cout << "Restaurant is now open!\n";
     getline(cin , input);
+    input.erase(input.find_last_not_of("\n\r\t")+1);
     while (input !="closeall")
     {
         if(input == "menu")
@@ -155,7 +156,7 @@ void Restaurant::start()
                 if(Type.substr(0,3) == "chp")
                     C = new CheapCustomer(Name , cusID);
                 else if(Type.substr(0,3) == "spc")
-                    C = new SpicyCustomer(Name, cusID);
+                    C = new SpicyCustomer(Name , cusID);
                 else if(Type.substr(0,3) == "alc")
                     C = new AlchoholicCustomer(Name , cusID);
                 else if(Type.substr(0,3) == "veg")
@@ -201,6 +202,7 @@ void Restaurant::start()
             actionsLog.push_back(action);
         }
         getline(cin , input);
+        input.erase(input.find_last_not_of("\n\r\t")+1);
     }
 
     BaseAction *action = new CloseAll();
