@@ -74,17 +74,20 @@ void Table::removeCustomer(int id) {
 
 void Table::order(const std::vector<Dish> &menu) {
     std::string description = "";
-    for (int i = 0; i < (int)(customersList.size()); i++) {
-        std::vector<int> customerOrder = customersList[i]->order(menu);
-        for (auto ID: customerOrder)
-            for (auto dish: menu)
-                if (ID == dish.getId()) {
-                    orderList.push_back(OrderPair(customersList[i]->getId(), dish));
-                    std::string cName = customersList[i]->getName();
-                    std::string dName = dish.getName();
-                    description += cName + " ordered " + dName + "\n";
-                }
+    if((int)(menu.size()) !=0) {
+        for (int i = 0; i < (int) (customersList.size()); i++) {
+            std::vector<int> customerOrder = customersList[i]->order(menu);
+            for (auto ID: customerOrder)
+                for (auto dish: menu)
+                    if (ID == dish.getId()) {
+                        orderList.push_back(OrderPair(customersList[i]->getId(), dish));
+                        std::string cName = customersList[i]->getName();
+                        std::string dName = dish.getName();
+                        description += cName + " ordered " + dName + "\n";
+                    }
+        }
     }
+
     std:: cout << description;
 }
 

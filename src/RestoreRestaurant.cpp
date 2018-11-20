@@ -24,7 +24,7 @@ std::string RestoreResturant::toString() const
 {
     if(getStatus() == ERROR)
         return "restore Error: No backup available\n";
-    return "restore Completed \n";
+    return "restore Completed\n";
 }
 
 BaseAction* RestoreResturant::clone() const

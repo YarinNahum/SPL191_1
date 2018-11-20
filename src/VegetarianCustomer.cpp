@@ -25,31 +25,26 @@ std::vector<int> VegetarianCustomer::order(const std::vector<Dish> &menu)
     }
 
     std::vector<int> output;
-
-    int minId = vegetarian[0].getId();
-
-    for(auto dish: vegetarian)
-    {
-        if (dish.getId() < minId)
-        {
-            minId = dish.getId();
+    if(((int)(vegetarian.size()) !=0) && ((int)(beverage.size()) !=0)){
+        int minId = vegetarian[0].getId();
+        for (auto dish: vegetarian) {
+            if (dish.getId() < minId) {
+                minId = dish.getId();
+            }
         }
+        output.push_back(minId);
+        int max = beverage[0].getPrice();
+        int maxId = beverage[0].getId();
+
+        for (auto dish: beverage) {
+            if ((dish.getPrice() > max) | ((dish.getPrice() == max) & (dish.getId() < maxId))) {
+                max = dish.getPrice();
+                maxId = dish.getId();
+            }
+        }
+        output.push_back(maxId);
     }
 
-    int max = beverage[0].getPrice();
-    int maxId = beverage[0].getId();
-
-    for(auto dish: beverage)
-    {
-        if ((dish.getPrice() > max) | ((dish.getPrice() == max) & (dish.getId() < maxId)))
-        {
-            max = dish.getPrice();
-            maxId = dish.getId();
-        }
-    }
-
-    output.push_back(minId);
-    output.push_back(maxId);
 
     return output;
 }

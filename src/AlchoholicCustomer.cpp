@@ -72,8 +72,6 @@ std::vector<int> AlchoholicCustomer::order(const std::vector<Dish> &menu)
         if(currIndex == maxIndex) // If the dish is the most expensive one, than the customer will no longer be able to order.
             hasFinished = true;
     }
-    else
-        std::cout << "This Alchoholic Customer has already ordered the most expenensive alchoholic beverage in the menu \n";
     return output;
 
 }

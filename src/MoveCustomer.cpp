@@ -35,9 +35,7 @@ void MoveCustomer::act(Restaurant &restaurant)
                 destination->addCustomer(customer);
                 source->setOrderList(newOrderList);
                 if (source->getCustomers().size() == 0) {
-                    BaseAction *close = new Close(srcTable);
-                    close->act(restaurant);
-                    delete close;
+                    source->closeTable();
                 }
 
                 complete();
