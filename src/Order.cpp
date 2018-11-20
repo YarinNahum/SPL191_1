@@ -12,7 +12,7 @@ void Order::act(Restaurant &restaurant) {
         description ="";
         Table* t = restaurant.getTable(tableId);
         if (t == nullptr || !t->isOpen()) {
-            error("Error: table does not exits or is not open\n");
+            error("Error: Table does not exist or is not open\n");
             description = getErrorMsg();
         }
         else {
@@ -25,7 +25,7 @@ void Order::act(Restaurant &restaurant) {
 std::string Order::toString() const
 {
     if(getStatus() == ERROR)
-        return "order " + std::to_string(tableId) + " Error: table does not exits or is not open\n";
+        return "order " + std::to_string(tableId) + " Error: Table does not exist or is not open\n";
     return "order " + std::to_string(tableId) + " Completed\n";
 }
 
