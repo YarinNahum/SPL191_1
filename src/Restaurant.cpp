@@ -261,12 +261,7 @@ void Restaurant::copy(const Restaurant& restaurant)
     {
         tables.push_back(table->clone());
     }
-
-    for(auto dish: restaurant.menu)
-    {
-        menu.push_back(dish);
-    }
-
+    
     for(auto action: restaurant.actionsLog)
     {
         actionsLog.push_back(action->clone());
