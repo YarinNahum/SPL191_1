@@ -98,7 +98,7 @@ void Restaurant::start()
 {
     int cusID = 0;
     string input;
-    cout << "Restaurant is now open!\n";
+    cout << "Restaurant is now open!" << endl;
     getline(cin , input);
     input.erase(input.find_last_not_of("\n\r\t")+1);
     while (input !="closeall")
